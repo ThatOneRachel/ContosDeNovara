@@ -197,7 +197,7 @@
     <circle class="cls-17" cx="465.51" cy="364.13" r="17.48"/>
     <path class="cls-25" d="M438.95,358.83c-1.08-1.6-2.42-3-3.96-4.17l-6.41-5.47-1.67,2.1c-.8-.11-1.62-.18-2.45-.18-9.66,0-17.48,7.83-17.48,17.48,0,2.21.43,4.31,1.17,6.26l-1.17,1.47,4.93,4.42c.56.57,1.15,1.11,1.78,1.6l.12.11h0c2.95,2.25,6.63,3.62,10.63,3.62,9.66,0,17.48-7.83,17.48-17.48,0-3.62-1.1-6.98-2.99-9.77Z"/>
     <circle class="cls-17" cx="419.48" cy="364.13" r="17.48"/>
-    <image id="imagem-cenas" width="368.36" height="201.33" transform="translate(183.04 34.15) scale(1)" xlink:href="../teste.png"/>
+    <image id="imagem-cenas" width="368.36" height="201.33" transform="translate(183.04 34.15) scale(1)" xlink:href="teste.png"/>
     <g>
       <rect class="cls-1" x="191.18" y="342.22" width="8.52" height="43.81" rx="3.57" ry="3.57"/>
       <rect class="cls-1" x="203.51" y="342.22" width="8.52" height="43.81" rx="3.57" ry="3.57"/>
@@ -1206,16 +1206,9 @@ var conversouCleo = false
             }
 
             function recomecar() {
-                document.getElementById("interfacePrincipal").style.opacity = 1
-                document.getElementById("interfacePrincipal").style.display = "block"
-                document.getElementById("fraseFinal").style.opacity = 0
-                document.getElementById("fraseFinal").style.display = "none"
-                document.getElementById("botaoRecomecar").style.opacity = 0
-                document.getElementById("botaoRecomecar").style.display = "none"
 
                 setTimeout(function() {
-                    cenaAtualId = "cena1"
-                    carregarCena(cenaAtualId)
+                    window.location.reload()
                 }, 1500)
             }
 
