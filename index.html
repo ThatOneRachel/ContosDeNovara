@@ -231,36 +231,97 @@
       <path class="cls-19" d="M340.61,382.46v-36.67c0-1.91,1.53-3.48,3.42-3.55-.05,0-.09-.01-.14-.01h-1.38c-1.96,0-3.57,1.61-3.57,3.57v36.67c0,1.96,1.61,3.57,3.57,3.57h1.38s.1-.01.14-.01c-1.9-.08-3.42-1.64-3.42-3.55Z"/>
     </g>
     <text id="dadosJane" class="cls-21" transform="translate(47.69 178.05)" style="display: block; color: #63746a; font-family: 'Space Mono', monospace; font-size: 10px; overflow-y: auto; height: 100%; padding-right: 5px;"><tspan x="0" y="0">Jane da Silva</tspan><tspan x="0" y="12">Setor 7-C</tspan><tspan x="0" y="24">Departamento de </tspan><tspan x="0" y="36">Registro e </tspan><tspan x="0" y="48">Conformidade</tspan><tspan x="0" y="60"></tspan><tspan id="texto-conformidade" x="0" y="72">100% de conformidade</tspan></text>
-    <foreignObject x="190" y="250" width="350" height="80">
-            <div xmlns="http://www.w3.org/1999/xhtml" id="texto-historia" style="color: #63746a; font-family: 'Space Mono', monospace; font-size: 10px; overflow-y: auto; height: 100%; padding-right: 5px;">
-                Carregando sistema...
-            </div>
-        </foreignObject>
-        <foreignObject id="foreignObj1" x="190" y="320" width="350" height="80">
-            <div xmlns="http://www.w3.org/1999/xhtml" id="texto-nav" onclick="fazerEscolha()" style="cursor: pointer; color: #4c9c6d; font-family: 'Space Mono', monospace; font-size: 11px; overflow-y: auto; height: 100%; padding-right: 5px;">
-                Carregando sistema...
-            </div>
-        </foreignObject>
-        <foreignObject id="foreignObj2" x="350" y="320" width="350" height="80">
-            <div xmlns="http://www.w3.org/1999/xhtml" id="texto-nav2" onclick="fazerEscolha(1)" style="display: none; cursor: pointer; color: #4c9c6d; font-family: 'Space Mono', monospace; font-size: 11px; overflow-y: auto; height: 100%; padding-right: 5px;">
-                Carregando sistema...
-            </div>
-        </foreignObject>
-        <foreignObject id="foreignObj3" x="350" y="320" width="350" height="80">
-            <div xmlns="http://www.w3.org/1999/xhtml" id="texto-nav3" onclick="fazerEscolha(2)" style="display: none; cursor: pointer; color: #4c9c6d; font-family: 'Space Mono', monospace; font-size: 11px; overflow-y: auto; height: 100%; padding-right: 5px;">
-                Carregando sistema...
-            </div>
-        </foreignObject>
-        <foreignObject id="foreignObj4" x="350" y="320" width="350" height="80">
-            <div xmlns="http://www.w3.org/1999/xhtml" id="texto-nav4" onclick="fazerEscolha(3)" style="display: none; cursor: pointer; color: #4c9c6d; font-family: 'Space Mono', monospace; font-size: 11px; overflow-y: auto; height: 100%; padding-right: 5px;">
-                Carregando sistema...
-            </div>
-        </foreignObject>
-        <foreignObject id="foreignObj5" x="350" y="320" width="350" height="80">
-            <div xmlns="http://www.w3.org/1999/xhtml" id="texto-nav5" onclick="fazerEscolha(4)" style="display: none; cursor: pointer; color: #4c9c6d; font-family: 'Space Mono', monospace; font-size: 11px; overflow-y: auto; height: 100%; padding-right: 5px;">
-                Carregando sistema...
-            </div>
-        </foreignObject>
+            <!-- ANTES: foreignObject texto-historia -->
+        <text
+        id="texto-historia"
+        x="190"
+        y="263"
+        fill="#63746a"
+        font-family="'Space Mono', monospace"
+        font-size="10"
+        dominant-baseline="hanging"
+        >
+        <tspan x="190" dy="0">Carregando sistema...</tspan>
+        </text>
+
+        <!-- ANTES: foreignObject texto-nav (botão 1 - sempre visível) -->
+        <text
+        id="texto-nav"
+        x="190"
+        y="328"
+        fill="#4c9c6d"
+        font-family="'Space Mono', monospace"
+        font-size="11"
+        cursor="pointer"
+        onclick="fazerEscolha()"
+        pointer-events="all"
+        >
+        <tspan x="190" dy="0">Carregando sistema...</tspan>
+        </text>
+
+        <!-- ANTES: foreignObject texto-nav2 -->
+        <text
+        id="texto-nav2"
+        x="350"
+        y="328"
+        fill="#4c9c6d"
+        font-family="'Space Mono', monospace"
+        font-size="11"
+        cursor="pointer"
+        onclick="fazerEscolha(1)"
+        pointer-events="all"
+        display="none"
+        >
+        <tspan x="350" dy="0">Carregando sistema...</tspan>
+        </text>
+
+        <!-- ANTES: foreignObject texto-nav3 -->
+        <text
+        id="texto-nav3"
+        x="350"
+        y="340"
+        fill="#4c9c6d"
+        font-family="'Space Mono', monospace"
+        font-size="11"
+        cursor="pointer"
+        onclick="fazerEscolha(2)"
+        pointer-events="all"
+        display="none"
+        >
+        <tspan x="350" dy="0">Carregando sistema...</tspan>
+        </text>
+
+        <!-- ANTES: foreignObject texto-nav4 -->
+        <text
+        id="texto-nav4"
+        x="350"
+        y="352"
+        fill="#4c9c6d"
+        font-family="'Space Mono', monospace"
+        font-size="11"
+        cursor="pointer"
+        onclick="fazerEscolha(3)"
+        pointer-events="all"
+        display="none"
+        >
+        <tspan x="350" dy="0">Carregando sistema...</tspan>
+        </text>
+
+        <!-- ANTES: foreignObject texto-nav5 -->
+        <text
+        id="texto-nav5"
+        x="350"
+        y="364"
+        fill="#4c9c6d"
+        font-family="'Space Mono', monospace"
+        font-size="11"
+        cursor="pointer"
+        onclick="fazerEscolha(4)"
+        pointer-events="all"
+        display="none"
+        >
+        <tspan x="350" dy="0">Carregando sistema...</tspan>
+        </text>
        
    <image id="imagemJane" width="573" height="538" transform="translate(46.32 39.92) scale(.21)" style="display: block;" xlink:href="./jane_oficial.png"/>
   </g>
@@ -319,7 +380,7 @@ var conversouCleo = false
                 conformidade: "100% de conformidade"
             },
             cena2: {
-                texto: "O sol nasce todos os dias no mesmo horário. As notícias são sempre boas. A economia cresce 3,2% ao ano, sem exceção. Os crimes caem consistentemente. Todo mundo sabe disso porque o ELLON disse.",
+                texto: "O sol nasce todos os dias no mesmo horário. As notícias são \n sempre boas. A economia cresce 3,2% ao ano, sem exceção.\nOs crimes caem consistentemente. Todo mundo sabe disso \n porque o ELLON disse.",
                 textoNav:"O ELLON sempre diz a verdade.",
                 imagem: "./imagem1.jpeg",
                 conformidade: "100% de conformidade"
@@ -342,19 +403,16 @@ var conversouCleo = false
                 imagem: " ",
                 conformidade: "100% de conformidade",
                 aoEntrar: function() {
-                    const painelTexto = document.getElementById('texto-historia');
-            
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[8:00]", 1000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[10:00]", 2000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[12:00]", 3000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[14:00]", 4000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[16:00]", 5000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[18:00]", 6000));
-                    
-                    temporizadoresAtivos.push(setTimeout(() => {
-                        cenaAtualId = "cena6" 
-                        carregarCena("cena6");
-                    }, 7000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[8:00]"), 1000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[10:00]"), 2000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[12:00]"), 3000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[14:00]"), 4000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[16:00]"), 5000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[18:00]"), 6000));
+                temporizadoresAtivos.push(setTimeout(() => {
+                    cenaAtualId = "cena6";
+                    carregarCena("cena6");
+                }, 7000));
                 }
             },
             cena6: {
@@ -376,12 +434,12 @@ var conversouCleo = false
                 conformidade: "100% de conformidade",
                 aoEntrar: function() {
                     const painelTexto = document.getElementById('texto-historia');
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[8:00]", 1000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[10:00]", 2000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[12:00]", 3000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[14:00]", 4000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[16:00]", 5000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.innerText += "\n[18:00]", 6000));
+                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[8:00]", 1000));
+                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[10:00]", 2000));
+                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[12:00]", 3000));
+                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[14:00]", 4000));
+                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[16:00]", 5000));
+                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[18:00]", 6000));
                     
                     temporizadoresAtivos.push(setTimeout(() => {
                         cenaAtualId = "cena9"; 
@@ -1023,7 +1081,24 @@ var conversouCleo = false
 
             // Atualiza Interface Básica
             // O innerHTML renderiza a tag span corretamente para o JavaScript encontrá-la
-            document.getElementById('texto-historia').innerHTML = cena.texto.replace(/\n/g, '<br>'); 
+            document.getElementById('texto-historia').innerHTML = cena.texto.replace(/\n/g, '<br>');
+
+            // DEPOIS
+            function setTextoHistoria(texto) {
+            const el = document.getElementById("texto-historia");
+            while (el.firstChild) el.removeChild(el.firstChild);
+            const x = el.getAttribute("x");
+            texto.split("\n").forEach((linha, i) => {
+                const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+                tspan.setAttribute("x", x);
+                tspan.setAttribute("dy", i === 0 ? "0" : "14");
+                tspan.textContent = linha;
+                el.appendChild(tspan);
+            });
+            }
+
+// E onde você chamava o innerHTML:
+            setTextoHistoria(cena.texto); 
             document.getElementById('texto-conformidade').textContent = cena.conformidade;
             
             const imgCena = document.getElementById('imagem-cenas');
@@ -1037,20 +1112,20 @@ var conversouCleo = false
             const nav4 = document.getElementById('texto-nav4');
             const nav5 = document.getElementById('texto-nav5');
 
-            nav1.style.display = cena.textoNav ? "block" : "none";
-            if (cena.textoNav) nav1.innerText = cena.textoNav;
+            nav1.setAttribute("display", cena.textoNav ? "inline" : "none");
+            if (cena.textoNav) nav1.textContent = cena.textoNav
 
-            nav2.style.display = cena.textoNav2 ? "block" : "none";
-            if (cena.textoNav2) nav2.innerText = cena.textoNav2;
+            nav2.setAttribute("display", cena.textoNav2 ? "inline" : "none");
+            if (cena.textoNav2) nav2.textContent = cena.textoNav2;
 
-            nav3.style.display = cena.textoNav3 ? "block" : "none";
-            if (cena.textoNav3) nav3.innerText = cena.textoNav3;
+            nav3.setAttribute("display", cena.textoNav3 ? "inline" : "none");
+            if (cena.textoNav3) nav3.textContent = cena.textoNav3;
 
-            nav4.style.display = cena.textoNav4 ? "block" : "none";
-            if (cena.textoNav4) nav4.innerText = cena.textoNav4;
+            nav4.setAttribute("display", cena.textoNav4 ? "inline" : "none");
+            if (cena.textoNav4) nav4.textContent = cena.textoNav4;
 
-            nav5.style.display = cena.textoNav5 ? "block" : "none";
-            if (cena.textoNav5) nav5.innerText = cena.textoNav5;
+            nav5.setAttribute("display", cena.textoNav5 ? "inline" : "none");
+            if (cena.textoNav5) nav5.textContent = cena.textoNav5;
 
             // 3. A SUPER LÓGICA DO "HUB" (Apenas para as cenas de múltipla escolha)
             if (idDaCena === "cena28") {
@@ -1079,19 +1154,29 @@ var conversouCleo = false
                 }
 
                 // Seu código de reposicionamento
-                document.getElementById('foreignObj2').setAttribute('x', '240');
-                document.getElementById('foreignObj3').setAttribute('x', '300');
-                document.getElementById('foreignObj4').setAttribute('x', '370');
-                document.getElementById('foreignObj5').setAttribute('x', '420');
+                document.getElementById('texto-nav2').setAttribute('x', '240');
+                document.getElementById('texto-nav3').setAttribute('x', '300');
+                document.getElementById('texto-nav4').setAttribute('x', '370');
+                document.getElementById('texto-nav5').setAttribute('x', '420');
             }
 
             if (idDaCena === "cena44") {
-                document.getElementById('foreignObj2').setAttribute('x', '350');
+                document.getElementById('texto-nav2').setAttribute('x', '350');
             }
 
             if (cena.aoEntrar) {
                 cena.aoEntrar();
             }
+        }
+
+        function adicionarLinhaHistoria(linha) {
+            const el = document.getElementById("texto-historia");
+            const x = el.getAttribute("x");
+            const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+            tspan.setAttribute("x", x);
+            tspan.setAttribute("dy", "14"); // espaçamento entre linhas
+            tspan.textContent = linha;
+            el.appendChild(tspan);
         }
 
         // 4. A Função de Navegação Refinada
