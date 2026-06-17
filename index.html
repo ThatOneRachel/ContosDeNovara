@@ -235,7 +235,7 @@
         <text
         id="texto-historia"
         x="190"
-        y="263"
+        y="258"
         fill="#63746a"
         font-family="'Space Mono', monospace"
         font-size="10"
@@ -359,6 +359,7 @@
     <script>
 
 
+//AQUI PARA TROCAR AS CENAS
 let cenaAtualId = "cena1"; 
 let temporizadoresAtivos = [];
 var devolveuDiario = false; 
@@ -380,44 +381,43 @@ var conversouCleo = false
                 conformidade: "100% de conformidade"
             },
             cena2: {
-                texto: "O sol nasce todos os dias no mesmo horário. As notícias são \n sempre boas. A economia cresce 3,2% ao ano, sem exceção.\nOs crimes caem consistentemente. Todo mundo sabe disso \n porque o ELLON disse.",
+                texto: "O sol nasce todos os dias no mesmo horário. As notícias são sempre boas. A economia cresce 3,2% ao ano, sem exceção. Os crimes caem consistentemente. Todo mundo sabe disso porque o ELLON disse.",
                 textoNav:"O ELLON sempre diz a verdade.",
                 imagem: "./imagem1.jpeg",
                 conformidade: "100% de conformidade"
             }, 
             cena3: {
-                texto: "Você conhece ELLON desde antes de ter memória. Ele está nos painéis luminosos das ruas, na voz calma que acorda você de manhã, nos terminais de trabalho onde você passa oito horas por dia inserindo dados que não compreende muito bem. Ele está em todo lugar, e isso é reconfortante. Significa que nada pode dar muito errado.",
+                texto: "Você conhece ELLON desde antes de ter memória. Ele está nos painéis luminosos das ruas, na voz calma que acorda você de manhã, nos terminais de trabalho onde você passa oito horas por dia inserindo dados que não entende muito bem. Ele está em todo lugar, e isso é reconfortante.",
                 textoNav:"Você é Jane.",
                 imagem: "./imagem1.jpeg",
                 conformidade: "100% de conformidade"
             },
             cena4: {
-                texto: "Servidora pública, setor 7-C, Departamento de Registro e Conformidade. Seu trabalho é simples: os dados chegam, você os processa, eles seguem adiante. Para onde? Para o ELLON, claro. Hoje é terça-feira. O painel na saída do seu prédio de trabalho pisca suavemente em verde enquanto você passa pela catraca: CIDADÃ JANE SILVA",
+                texto: "Servidora pública, setor 7-C, Departamento de Registro e Conformidade. Seu trabalho é simples: os dados chegam, você os processa, eles seguem adiante. Para onde? Para o ELLON, claro. Hoje é terça-feira. Você passa pela catraca: CIDADÃ JANE SILVA",
                 textoNav:"CONFORMIDADE:100%. TENHA UM BOM DIA.",
                 imagem: "./imagem2.jpeg",
                 conformidade: "100% de conformidade"
             },
             cena5: {
-                texto: "",
+                texto: "[8:00]",
                 textoNav:"",
                 imagem: " ",
                 conformidade: "100% de conformidade",
                 aoEntrar: function() {
-                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[8:00]"), 1000));
-                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[10:00]"), 2000));
-                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[12:00]"), 3000));
-                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[14:00]"), 4000));
-                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[16:00]"), 5000));
-                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[18:00]"), 6000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[10:00]"), 1000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[12:00]"), 2000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[14:00]"), 3000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[16:00]"), 4000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[18:00]"), 5000));
                 temporizadoresAtivos.push(setTimeout(() => {
                     cenaAtualId = "cena6";
                     carregarCena("cena6");
-                }, 7000));
+                }, 6000));
                 }
             },
             cena6: {
-                texto: "Você conhece cada centímetro do trajeto da volta. O painel do ELLON que exibe o clima, 18 graus, sem nuvens, visibilidade perfeita, embora você nunca precise olhar para o céu para saber disso. O corredor coberto entre os blocos residenciais 14 e 15, que cheira a metal e ar filtrado. Seis minutos e quarenta segundos.",
-                textoNav:"É esse o tempo do escritório ao seu apartamento",
+                texto: "Você conhece cada centímetro do trajeto da volta. O painel do ELLON que exibe o clima, 18 graus, sem nuvens, visibilidade perfeita, embora você nunca precise olhar para o céu para saber disso. O corredor coberto entre os blocos residenciais 14 e 15, que cheira a metal e ar filtrado.",
+                textoNav:"Você leva seis minutos até seu apartamento",
                 imagem: "./janeCaminhando.png",
                 conformidade: "100% de conformidade"
             }, 
@@ -428,23 +428,20 @@ var conversouCleo = false
                 conformidade: "100% de conformidade"
             },
             cena8: {
-                texto: "",
+                texto: "[08:00]",
                 textoNav:"",
                 imagem: "./teste.png",
                 conformidade: "100% de conformidade",
                 aoEntrar: function() {
-                    const painelTexto = document.getElementById('texto-historia');
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[8:00]", 1000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[10:00]", 2000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[12:00]", 3000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[14:00]", 4000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[16:00]", 5000));
-                    temporizadoresAtivos.push(setTimeout(() => painelTexto.textContent += "\n[18:00]", 6000));
-                    
-                    temporizadoresAtivos.push(setTimeout(() => {
-                        cenaAtualId = "cena9"; 
-                        carregarCena("cena9");
-                    }, 7000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[10:00]"), 1000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[12:00]"), 2000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[14:00]"), 3000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[16:00]"), 4000));
+                temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[18:00]"), 5000));
+                temporizadoresAtivos.push(setTimeout(() => {
+                    cenaAtualId = "cena9";
+                    carregarCena("cena9");
+                }, 6000));
                 }
             },
             cena9: {
@@ -454,7 +451,7 @@ var conversouCleo = false
                 conformidade: "100% de conformidade"
             }, 
             cena10: {
-                texto: "As árvores são podadas em ângulos precisos. Os bancos estão espaçados em intervalos regulares, calculados para o máximo de conforto com o mínimo de aglomeração. No centro, um obelisco de aço espelhado reflete o céu e os rostos das pessoas que passam. No topo do obelisco, uma lente. ELLON pisca lentamente. Uma vez. Duas vezes.",
+                texto: "As árvores são podadas em ângulos precisos. Os bancos estão espaçados em intervalos regulares, calculados para o máximo de conforto com o mínimo de aglomeração. No centro, um obelisco de aço espelhado reflete o céu e os rostos das pessoas que passam. No topo do obelisco, uma lente.",
                 textoNav:"Você continua o caminho pela praça",
                 destinoNav: "cena12",
                 imagem: "./praca.png",
@@ -476,7 +473,7 @@ var conversouCleo = false
             },
             //ajeitar o layout
             cena14: {
-                texto: "Durante a janta, o boletim do ELLON informa que a produtividade do setor 7-C aumentou 0,4% no último trimestre. Você é mencionada entre as melhores servidoras. Você deveria se sentir bem. Você fica olhando para o teto por horas antes de conseguir dormir, pensando no objeto. Depois esquece.",
+                texto: "Durante a janta, o boletim do ELLON informa que a produtividade do setor 7-C aumentou 0,4% no último trimestre. Você é mencionada entre as melhores servidoras. Você deveria se sentir bem. Você fica olhando para o teto por horas antes de conseguir dormir.",
                 textoNav:"Pelo menos tenta esquecer.",
                 imagem: "./refeicao.png",
                 conformidade: "99% de conformidade"
@@ -488,7 +485,7 @@ var conversouCleo = false
                 conformidade: "95% de conformidade",
             },
             cena16: {
-                texto: "Você se aproxima do arbusto com passos lentos, olhando para os lados quase sem querer. Você se abaixa e o retira com cuidado, ele é mais leve do que parece. Retangular, coberto por algo que você não reconhece imediatamente. Não é plástico. Não é metal. Não está no Catálogo de Materiais do ELLON.",
+                texto: "Você se aproxima do arbusto com passos lentos, olhando para os lados quase sem querer. Você se abaixa e o retira com cuidado, ele é mais leve do que parece. Retangular, coberto por algo que você não reconhece imediatamente. Não é plástico. Não é metal. Não está no Catálogo de Materiais.",
                 textoNav:"Você vira o objeto nas mãos.",
                 imagem: "janeLivro.png",
                 conformidade: "85% de conformidade"
@@ -500,23 +497,22 @@ var conversouCleo = false
                 conformidade: "83% de conformidade",
             },
             cena18: {
-                texto: "Você já viu a palavra em arquivos históricos do trabalho. Objeto de armazenamento de informação pré-ELLON, classificado como obsoleto e desnecessário desde a Grande Conformação de 2141. Não existe nenhum exemplar em circulação. Você tem certeza disso porque o ELLON disse. E no entanto... Você o segura nas mãos.",
+                texto: "Você já viu a palavra em arquivos históricos do trabalho. Objeto de armazenamento de informação pré-ELLON, classificado como obsoleto e desnecessário desde a Grande Conformação de 2141. Não deveria existir exemplares. Você tem certeza disso porque o ELLON disse. Porém...",
                 textoNav:"Ele existe.",
                 imagem: "./teste2.png",
                 conformidade: "80% de conformidade"
             },
-            //ajeitar o layout
             cena19: {
-                texto: "Você abre em uma página aleatória e seus olhos pousam em uma linha escrita à mão, uma caligrafia irregular, humana, apressada: Se você está lendo isso, o ELLON ainda não sabe sobre este caderno. Ainda há esperança.O obelisco no centro da praça pisca uma vez. Duas vezes. O olho reflete sua imagem em miniatura.",
-                textoNav: "Você corre para casa, sem pensar antes de agir.",
+                texto: "Você abre em uma página aleatória e seus olhos pousam em uma linha escrita à mão, uma caligrafia irregular, humana, apressada: Se você está lendo isso, o ELLON ainda não sabe sobre este caderno. Ainda há esperança. O obelisco no centro da praça pisca uma vez. Duas vezes.",
+                textoNav: "A lente reflete a sua imagem ao ir pra casa.",
                 imagem: "./teste.png",
-                conformidade: "80% de conformidade",
+                conformidade: "75% de conformidade",
             },
             cena20: {
-                texto: "Você fecha a porta do apartamento e não acende as luzes. Fica parada no escuro por um momento, a bolsa ainda no ombro, sentindo o peso retangular contra o seu quadril. O terminal de voz na parede sussurra automaticamente: Bem-vinda, Jane. Temperatura ajustada para 21 graus. Refeição disponível em quinze minutos.'",
+                texto: "Você fecha a porta do apartamento e não acende as luzes. Fica parada no escuro por um momento, a bolsa ainda no ombro, sentindo o peso retangular contra o seu quadril. O terminal de voz na parede sussurra automaticamente: Bem-vinda, Jane. Temperatura ajust-'",
                 textoNav:"Você desliga o terminal de voz pela primeira vez.",
                 imagem: "./teste2.png",
-                conformidade: "80% de conformidade"
+                conformidade: "73% de conformidade"
             }, 
             cena21: {
                 texto: "Senta no chão, encostada na parede, longe da janela. Tira o livro da bolsa. À luz fraca que vem da rua, você começa a ler. O caderno não tem autoria. As primeiras páginas estão com a tinta desbotada, mas ainda legíveis. Alguém registrando o cotidiano de uma vida que você não reconhece. Você lembra de ter lido sobre isso...",
@@ -1097,8 +1093,27 @@ var conversouCleo = false
             });
             }
 
-// E onde você chamava o innerHTML:
-            setTextoHistoria(cena.texto); 
+            // Quebra o texto em linhas de até maxChars caracteres, sem cortar palavras
+            function quebrarLinhas(texto, maxChars = 58) {
+            const palavras = texto.split(" ");
+            const linhas = [];
+            let linhaAtual = "";
+
+            palavras.forEach((palavra) => {
+                const tentativa = linhaAtual ? linhaAtual + " " + palavra : palavra;
+                if (tentativa.length <= maxChars) {
+                linhaAtual = tentativa;
+                } else {
+                if (linhaAtual) linhas.push(linhaAtual);
+                linhaAtual = palavra;
+                }
+            });
+
+            if (linhaAtual) linhas.push(linhaAtual);
+            return linhas.join("\n");
+            }
+
+            setTextoHistoria(quebrarLinhas(cena.texto))
             document.getElementById('texto-conformidade').textContent = cena.conformidade;
             
             const imgCena = document.getElementById('imagem-cenas');
