@@ -1056,6 +1056,47 @@ var conversouCleo = false
 
         };
 
+        // === FUNÇÕES AUXILIARES DE TEXTO (movidas para o escopo global) ===
+        // Antes, essas duas funções eram declaradas DENTRO de carregarCena, o que
+        // significava que só existiam ali dentro. Como atualizarRelogioNaTela()
+        // (usada pelo timer do quiz) também precisa delas e está fora de
+        // carregarCena, ela não conseguia encontrá-las e falhava silenciosamente
+        // a cada segundo. Agora ambas vivem aqui, no escopo do script, acessíveis
+        // tanto por carregarCena quanto por atualizarRelogioNaTela.
+
+        function setTextoHistoria(texto) {
+            const el = document.getElementById("texto-historia");
+            while (el.firstChild) el.removeChild(el.firstChild);
+            const x = el.getAttribute("x");
+            texto.split("\n").forEach((linha, i) => {
+                const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+                tspan.setAttribute("x", x);
+                tspan.setAttribute("dy", i === 0 ? "0" : "14");
+                tspan.textContent = linha;
+                el.appendChild(tspan);
+            });
+        }
+
+        // Quebra o texto em linhas de até maxChars caracteres, sem cortar palavras
+        function quebrarLinhas(texto, maxChars = 58) {
+            const palavras = texto.split(" ");
+            const linhas = [];
+            let linhaAtual = "";
+
+            palavras.forEach((palavra) => {
+                const tentativa = linhaAtual ? linhaAtual + " " + palavra : palavra;
+                if (tentativa.length <= maxChars) {
+                linhaAtual = tentativa;
+                } else {
+                if (linhaAtual) linhas.push(linhaAtual);
+                linhaAtual = palavra;
+                }
+            });
+
+                if (linhaAtual) linhas.push(linhaAtual);
+                return linhas.join("\n");
+        }
+
 
         function carregarCena(idDaCena) {
             
@@ -1108,40 +1149,6 @@ var conversouCleo = false
             // Atualiza Interface Básica
             // O innerHTML renderiza a tag span corretamente para o JavaScript encontrá-la
             document.getElementById('texto-historia').innerHTML = cena.texto.replace(/\n/g, '<br>');
-
-            // DEPOIS
-            function setTextoHistoria(texto) {
-            const el = document.getElementById("texto-historia");
-            while (el.firstChild) el.removeChild(el.firstChild);
-            const x = el.getAttribute("x");
-            texto.split("\n").forEach((linha, i) => {
-                const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
-                tspan.setAttribute("x", x);
-                tspan.setAttribute("dy", i === 0 ? "0" : "14");
-                tspan.textContent = linha;
-                el.appendChild(tspan);
-            });
-            }
-
-            // Quebra o texto em linhas de até maxChars caracteres, sem cortar palavras
-            function quebrarLinhas(texto, maxChars = 58) {
-            const palavras = texto.split(" ");
-            const linhas = [];
-            let linhaAtual = "";
-
-            palavras.forEach((palavra) => {
-                const tentativa = linhaAtual ? linhaAtual + " " + palavra : palavra;
-                if (tentativa.length <= maxChars) {
-                linhaAtual = tentativa;
-                } else {
-                if (linhaAtual) linhas.push(linhaAtual);
-                linhaAtual = palavra;
-                }
-            });
-
-                if (linhaAtual) linhas.push(linhaAtual);
-                return linhas.join("\n");
-            }
 
             let textoParaMostrar = cena.texto.replace("[TEMPO]", sec);
             
