@@ -279,7 +279,7 @@
         <text
         id="texto-nav3"
         x="350"
-        y="340"
+        y="328"
         fill="#4c9c6d"
         font-family="'Space Mono', monospace"
         font-size="11"
@@ -295,7 +295,7 @@
         <text
         id="texto-nav4"
         x="350"
-        y="352"
+        y="328"
         fill="#4c9c6d"
         font-family="'Space Mono', monospace"
         font-size="11"
@@ -311,7 +311,7 @@
         <text
         id="texto-nav5"
         x="350"
-        y="364"
+        y="328"
         fill="#4c9c6d"
         font-family="'Space Mono', monospace"
         font-size="11"
@@ -360,7 +360,7 @@
 
 
 //AQUI PARA TROCAR AS CENAS
-let cenaAtualId = "cena1"; 
+let cenaAtualId = "cena67"; 
 let temporizadoresAtivos = [];
 var devolveuDiario = false; 
 
@@ -417,6 +417,7 @@ var conversouCleo = false
             },
             cena6: {
                 texto: "Você conhece cada centímetro do trajeto da volta. O painel do ELLON que exibe o clima, 18 graus, sem nuvens, visibilidade perfeita, embora você nunca precise olhar para o céu para saber disso. O corredor coberto entre os blocos residenciais 14 e 15, que cheira a metal e ar filtrado.",
+                quebraLinha: 60,
                 textoNav:"Você leva seis minutos até seu apartamento",
                 imagem: "./janeCaminhando.png",
                 conformidade: "100% de conformidade"
@@ -446,6 +447,7 @@ var conversouCleo = false
             },
             cena9: {
                 texto: "Você não sabe bem o que te fez virar à esquerda na saída do escritório. O dia estava bonito, ou pelo menos o painel dizia que estava, e de fato o ar parecia menos filtrado que o normal. Você decidiu ir pela praça. Um desvio de doze minutos do seu trajeto padrão. Insignificante. Permitido.",
+                quebraLinha: 60,
                 textoNav:"A Praça Central de Novara é simétrica e limpa.",
                 imagem: "./janeCaminhando.png",
                 conformidade: "100% de conformidade"
@@ -486,6 +488,7 @@ var conversouCleo = false
             },
             cena16: {
                 texto: "Você se aproxima do arbusto com passos lentos, olhando para os lados quase sem querer. Você se abaixa e o retira com cuidado, ele é mais leve do que parece. Retangular, coberto por algo que você não reconhece imediatamente. Não é plástico. Não é metal. Não está no Catálogo de Materiais.",
+                quebraLinha: 60,
                 textoNav:"Você vira o objeto nas mãos.",
                 imagem: "janeLivro.png",
                 conformidade: "85% de conformidade"
@@ -515,26 +518,27 @@ var conversouCleo = false
                 conformidade: "73% de conformidade"
             }, 
             cena21: {
-                texto: "Senta no chão, encostada na parede, longe da janela. Tira o livro da bolsa. À luz fraca que vem da rua, você começa a ler. O caderno não tem autoria. As primeiras páginas estão com a tinta desbotada, mas ainda legíveis. Alguém registrando o cotidiano de uma vida que você não reconhece. Você lembra de ter lido sobre isso...",
-                textoNav:"Ah, sim! Um diário",
+                texto: "Senta no chão, encostada na parede, longe da janela. Tira o livro da bolsa. À luz fraca que vem da rua, você começa a ler. O caderno não tem autoria. As primeiras páginas estão com a tinta desbotada, mas ainda legíveis. É o cotidiano de uma vida que você não reconhece.",
+                textoNav:"Isso é um diário.",
+                quebraLinha: 61,
                 imagem: "./teste.png",
-                conformidade: "80% de conformidade",
+                conformidade: "72% de conformidade",
             },
             cena22: {
                 texto: "'Fui ao mercado hoje. Havia doze tipos diferentes de pão. O padeiro se chama Antônio e contou que aprendeu a receita com o pai, que aprendeu com o avô. Comprei dois e comi um ainda quente na calçada.' Você relê a frase três vezes. Doze tipos de pão. No seu terminal de nutrição há um. Balanceado, eficiente, sem desperdício.",
-                textoNav: "Você vira a página.",
+                textoNav: "Próxima página",
                 imagem: "./teste2.png",
-                conformidade: "79% de conformidade"
+                conformidade: "71% de conformidade"
             },
             cena23: {
                 texto: "'As crianças jogavam bola na rua hoje até escurecer. A vizinha reclamou do barulho, o pai de um deles respondeu, discutiram por dez minutos e depois riram juntos. Essas coisas acontecem.' Crianças que correm. Pessoas que discutem. Pessoas que riem depois de discutir.",
-                textoNav: "Você corre para casa, sem pensar antes de agir.",
+                textoNav: "Próxima página",
                 imagem: "./teste.png",
                 conformidade: "79% de conformidade",
             },
             cena24: {
                 texto: "O diário descreve um mundo onde as pessoas escolhiam o que comer, o que vestir, para onde ir. Músicas que ninguém havia aprovado. Livros sobre assuntos inúteis. Conversas sem propósito produtivo. Eleições onde o resultado era incerto. Falas como: 'Hoje nevou pela primeira vez em anos. Saí só para ver, sem motivo.'",
-                textoNav:"Você nunca fez algo sem motivo algum.",
+                textoNav:"Próxima página.",
                 imagem: "./teste2.png",
                 conformidade: "78% de conformidade"
             }, 
@@ -547,12 +551,13 @@ var conversouCleo = false
             cena26: {
                 texto: "Lá fora, Novara dorme silenciosa. Os painéis piscam em verde suave. Você fica sentada no escuro por muito tempo, com o caderno no colo, pensando em doze tipos de pão.",
                 textoNav:"Três dias depois...",
-                imagem: "./teste2.png",
+                imagem: "./janela.png",
                 conformidade: "75% de conformidade"
             }, 
             //A PARTIR DAQUI
             cena27: {
-                texto: "Você não consegue mais olhar para o seu trabalho da mesma forma. Os dados que você processa, coordenadas, registros, relatórios de conformidade, agora têm outro peso. Você pensa na palavra que o caderno usava para descrever o que existia antes: escolha. Uma palavra que você conhece, mas que nunca havia parecido tão concreta.",
+                texto: "Seu trabalho não tem mais o mesmo sentido. Tudo que você processa, coordenadas, registros, dados de conformidade, agora têm outro peso. Você pensa na palavra que o caderno usava para descrever o que existia antes: escolha. Uma palavra que você conhece, mas que nunca havia parecido real.",
+                quebraLinha: 61,
                 textoNav:"Você precisa falar com alguém",
                 imagem: "./teste2.png",
                 conformidade: "85% de conformidade"
@@ -563,7 +568,7 @@ var conversouCleo = false
                 texto: "Não sabe bem por quê, talvez para confirmar que o que sentiu ao ler era real. Talvez só para ouvir outra voz humana dizer que sim, algo naquelas páginas faz sentido. Você pensa em quem poderia ser esse alguém.",
                 
                 textoNav: "Dora",
-                destinoNav: "cena29", // Adicionado o destino da Dora!
+                destinoNav: "cena29", 
 
                 textoNav2: "Marcus",
                 destinoNav2: "cena32",
@@ -575,21 +580,23 @@ var conversouCleo = false
                 destinoNav4: "cena38",
 
                 textoNav5: "Cleo",
-                destinoNav5: "cena41", // Corrigido para 41 (onde a Cleo começa)
+                destinoNav5: "cena41", 
 
                 imagem:  "./teste.png",
                 conformidade: "83% de conformidade",
             },
             
-            // --- ROTA DA DORA ---
+            // --- ROTA DA DORA --- LAYOUT OK
             cena29: {
-                texto: "Dora, 34 anos. Vizinha de porta. Sorri para tudo. Você bate na porta de Dora no fim da tarde, com o caderno dentro da bolsa. Ela abre com um sorriso imediato, como sempre. Você entra, senta no sofá idêntico ao seu, no apartamento idêntico ao seu, e começa a falar. Primeiro devagar, depois com mais urgência — sobre... sobre tudo.",
-                textoNav: "Dora ouve com um mesmo sorriso a conversa.",
+                texto: "Dora, 34 anos. Vizinha de porta. Sorri para tudo. Você bate na porta de Dora no fim da tarde, com o caderno dentro da bolsa. Ela abre com um sorriso imediato, como sempre. Você entra, senta no sofá igual ao seu, no apartamento igual ao seu. Depois, você fala sobre... tudo.",
+                quebraLinha: 61,
+                textoNav: "Dora ouve tudo com um sorriso que não chega aos olhos.",
                 imagem: "./teste2.png",
                 conformidade: "80% de conformidade"
             },
             cena30: {
-                texto: "Dora ouve com o mesmo sorriso durante toda a conversa. Quando você termina, ela inclina a cabeça levemente e começa a falar: 'Que interessante, Jane. Mas você sabe que os registros históricos não verificados podem conter imprecisões, né? O ELLON já explicou que muito do que se escrevia antes era distorcido por emoções e pensamentos.'",
+                texto: "Quando você termina, ela inclina a cabeça levemente e começa a falar: 'Que interessante, Jane. Mas você sabe que os registros históricos não verificados podem conter imprecisões, né? O ELLON já explicou que muito do que se escrevia antes era distorcido por emoções e pensamentos.'",
+                quebraLinha: 61,
                 textoNav: "Ela continua sorrindo, agoniantemente",
                 imagem: "./teste.png",
                 conformidade: "80% de conformidade",
@@ -602,9 +609,10 @@ var conversouCleo = false
                 conformidade: "80% de conformidade"
             }, 
 
-            // --- ROTA DO MARCUS ---
+            // --- ROTA DO MARCUS --- LAYOUT OK
             cena32: {
-                texto: "Marcos, 41 anos. Colega de trabalho. Processador de dados, setor 7-B. Você espera Marcos depois do expediente. Ele é quieto, eficiente, nunca causa problemas — mas às vezes você nota que ele demora um segundo a mais antes de enviar os arquivos. Você conta sobre o diário em voz baixa, em um corredor vazio.",
+                texto: "Marcos, 41 anos. Colega de trabalho. Processador de dados, setor 7-B. Você espera Marcos depois do expediente. Ele é quieto, eficiente, nunca causa problemas — mas às vezes você nota que ele demora um pouco a mais antes de enviar os arquivos. Você conta sobre o diário em voz baixa.",
+                quebraLinha: 60,
                 textoNav: "Ao terminar, ele pergunta: 'Onde guardou?'",
                 imagem: "./teste.png",
                 conformidade: "80% de conformidade",
@@ -623,7 +631,7 @@ var conversouCleo = false
                 conformidade: "79% de conformidade",
             },
 
-            // --- ROTA DA DONA IEDA ---
+            // --- ROTA DA DONA IEDA --- LAYOUT OK
             cena35: {
                 texto: "Senhora Ieda, 90 anos. A moradora mais antiga do bloco. A Dona Ieda abre a porta antes de você bater — como se soubesse que você viria. O apartamento dela cheira diferente dos outros. Mais denso. Você nunca havia entrado antes.",
                 textoNav: "Você começa a falar sobre o caderno.",
@@ -631,7 +639,8 @@ var conversouCleo = false
                 conformidade: "78% de conformidade"
             }, 
             cena36: {
-                texto: "Antes de terminar a primeira frase, a Senhora Ieda levanta uma mão. 'Eu sei o que é um livro, minha filha.' Você para. 'Eu tinha onze anos quando aconteceu a Conformação.' A voz é calma, quase sem emoção, como quem já ensaiou guardar essa dor por décadas. 'Minha mãe tinha uma prateleira inteira. Queimaram tudo em três dias.'",
+                texto: "Antes de terminar a primeira frase, a Senhora Ieda levanta uma mão. 'Eu sei o que é um livro, minha filha.' Você para. 'Eu tinha onze anos quando aconteceu a Conformação.' A voz é calma, quase sem emoção, como quem já ensaiou guardar essa dor por décadas. 'Eles queimaram todos que a gente tinha'.",
+                quebraLinha: 60,
                 textoNav: "Os olhos são velhos e completamente lúcidos.",
                 imagem: "./teste.png",
                 conformidade: "75% de conformidade",
@@ -644,21 +653,23 @@ var conversouCleo = false
                 conformidade: "75% de conformidade"
             }, 
 
-            // --- ROTA DO TOMÁS ---
+            // --- ROTA DO TOMÁS --- LAYOUT OK
             cena38: {
                 texto: "Tomás, 27 anos. Atendente do terminal de alimentação do bloco. Tomás é o tipo de pessoa que parece não ter pensamentos complicados. Ele está sempre no mesmo lugar, sempre com o mesmo avental, sempre perguntando se você quer a refeição padrão ou a refeição padrão com variação B.",
+                quebraLinha: 60,
                 textoNav: "Você conta sobre o caderno enquanto ele limpa o chão",
                 imagem: "./teste2.png",
                 conformidade: "75% de conformidade"
             }, 
             cena39: {
-                texto: "Ele ouve sem parar de limpar. — Doze tipos de pão? — ele repete, quando você termina. — É o que estava escrito. Ele para de limpar. Olha para o balcão por um segundo. — Minha avó falava em algo assim. — A voz é baixa, quase para si mesmo. — Eu achei que era coisa de velho, sabe? Que ficava inventando. Que as coisas sempre foram assim.", 
+                texto: "Ele ouve sem parar de limpar. 'Doze tipos de pão?'' ele repete, quando você termina. 'É o que estava escrito.' Ele para de limpar. Olha para o balcão por um segundo. 'Minha avó falava em algo assim.' A voz é baixa, quase para si mesmo. 'Eu achei que era invenção de velho'.", 
+                quebraLinha: 60,
                 textoNav: "Ele recomeça a limpar mais devagar",
                 imagem: "./teste.png",
                 conformidade: "75% de conformidade",
             },
             cena40: {
-                texto: "— Você acha que era verdade? O que ela falava? Você não sabe o que responder. Mas percebe que a pergunta dele é genuína — ele não está te testando, não está te reportando. Ele está, pela primeira vez talvez, duvidando.",
+                texto: "'Você acha que era verdade? O que ela falava?' Ele pergunta e você fica sem resposta. Mas percebe que a pergunta dele é genuína. Ele está, pela primeira vez talvez, duvidando.",
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./teste2.png",
@@ -673,13 +684,14 @@ var conversouCleo = false
                 conformidade: "75% de conformidade"
             }, 
             cena42: {
-                texto: "Ela ouve com atenção total, sem interromper, sem mudar a expressão. Quando você termina, ela se levanta, vai até a porta, e a fecha. Você sente o estômago apertar. Ela volta para a mesa. Fica de pé, olhando para você.— Jane. — A voz é cuidadosa, medida. — Você é uma das melhores servidoras do setor. Eu não quero que isso mude.",
+                texto: "Ela ouve com atenção total, sem interromper, sem mudar a expressão. Quando você termina, ela se levanta, vai até a porta, e a fecha. Você sente o estômago apertar. 'Jane.' A voz é contida. 'Você é uma das melhores servidoras do setor. Eu não quero que isso mude.'",
+                quebraLinha: 60,
                 textoNav: "Uma pausa...",
                 imagem: "./teste2.png",
                 conformidade: "75% de conformidade"
             }, 
             cena43: {
-                texto: "— Recomendo que você entregue o objeto ao Departamento de Conformidade e registre onde o encontrou. Esse é o procedimento correto. Se fizer isso agora, isso fica entre nós. O tom não é ameaçador. É quase gentil. O que o torna mais assustador. Você sai do escritório sem dizer se vai fazer isso ou não.",
+                texto: "'Recomendo que você entregue o objeto ao Departamento de Conformidade e registre onde o encontrou. Esse é o procedimento correto. Se fizer isso agora, isso fica entre nós.' O tom não é ameaçador. É quase gentil. O que o torna mais assustador. Você sai do escritório.",
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./teste2.png",
@@ -698,7 +710,7 @@ var conversouCleo = false
             },
             // ---- ENTREGAR DIÁRIO ------ 
             cena45: {
-                texto: "Você entrega o caderno no Departamento de Conformidade na manhã seguinte. A atendente registra o objeto sem olhar para você. Emite um comprovante. Diz que sua conformidade foi anotada positivamente. Você volta para o trabalho. Processa os dados. Envia para o ELLON. Naquela noite, você pensa em todos que conversou durante o dia",
+                texto: "Você entrega o caderno no Departamento de Conformidade na manhã seguinte. A atendente registra o objeto sem olhar para você. Emite um comprovante. Diz que sua conformidade foi anotada positivamente. Você volta para o trabalho. Processa os dados. Envia para o ELLON.",
                 textoNav: "Você escolheu não saber",
                 imagem: "./teste2.png",
                 conformidade: "100% de conformidade"
@@ -716,14 +728,17 @@ var conversouCleo = false
                 conformidade: "100% de conformidade"
             },
             cena48: {
-                texto: "Não tem ninguém lá. Nenhuma alma. Nada. Apenas as luzes da cdade iluminam a rua e você começa a se perguntar por que tinha tido essa ideia insana. Tem uma janela aberta. Atrás das grades do terreno, você enxerga uma pequena fresta em uma das janelas do prédio. É loucura demais? Você começa a escalar a grade e...",
+                texto: "Não tem ninguém lá. Nenhuma alma. Nada. Apenas as luzes da cdade iluminam a rua e você começa a se perguntar por que tinha tido essa ideia insana. Atrás das grades do terreno, você enxerga uma pequena fresta em uma das janelas do prédio. É loucura demais? Você começa a escalar a grade e...",
+                quebraLinha: 60,
                 textoNav: "Sente alguém tocar em você",
                 imagem: "./teste.png",
                 conformidade: "70% de conformidade"
             },
+            // vai ser imagem
             cena49: {
                 texto: "Alguma pessoa deixa um papel no seu bolso e some, como se nunca tivesse existido. Você entra em pânico, procura a fonte de luz mais próxima e lê. É um papel com apenas duas linhas escritas: 'Sabemos o que você encontrou. Sabemos com quem você falou. Se quiser saber o que aconteceu com o mundo daquele caderno, apareça.'",
-                textoNav: "Abaixo, um endereço. Uma hora. Hoje, a meia noite",
+                quebraLinha: 60,
+                textoNav: "Atrás, um endereço. Uma hora. Hoje, a meia noite",
                 destinoNav: "cena52",
                 imagem: "./teste.png",
                 conformidade: "70% de conformidade"
@@ -735,29 +750,36 @@ var conversouCleo = false
                 imagem: "./teste.png",
                 conformidade: "68% de conformidade"
             },
+            //vai ser imagem
             cena51: {
                 texto: "Você acorda com uma mensagem no terminal. Remetente desconhecido. Sem identificação de origem, o que deveria ser impossível, já que toda comunicação passa pelo ELLON. A mensagem tem apenas duas linhas: 'Sabemos o que você encontrou. Sabemos com quem você falou. Se quiser saber o que aconteceu com o mundo daquele caderno, apareça.'",
+                quebraLinha: 60,
                 textoNav: "Abaixo, um endereço. Uma hora. Hoje, à meia-noite.",
                 imagem: "./teste.png",
                 conformidade: "70% de conformidade"
             },
             // --- HISTÓRIA LINEAR DE NOVO ---- 
             cena52: {
-                texto: "O endereço fica em uma parte da cidade que você nunca havia visitado. Não porque fosse proibido, nenhum lugar em Novara é formalmente proibido. Mas simplemente nenhuma rota passava por ali. Nenhum terminal de alimentação, nenhum posto de conformidade. O tipo de lugar que existe no mapa mas que o sistema nunca aponta.",
+                texto: "O endereço fica em uma parte da cidade que você nunca havia visitado. Não porque fosse proibido, nenhum lugar em Novara é formalmente proibido. Mas simplemente nenhuma rota passava por ali. Nenhum terminal de alimentação, nenhum posto de conformidade. O tipo de lugar que existe, porém não.",
+                quebraLinha: 60,
                 textoNav: "Você chega a pé, às 23h58.",
                 destinoNav: "cena53",
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
             },
             cena53: {
-                texto: "É um prédio baixo de concreto, sem identificação. A porta está entreaberta. Dentro, você desce uma escada. No subsolo há uma sala iluminada por cabos de luz improvisados. Quatro pessoas sentadas em cadeiras dispostas em semicírculo. Elas param de falar",
+                texto: "É um prédio baixo de concreto, sem identificação. A porta está entreaberta. Dentro, você desce uma escada. No subsolo há uma sala iluminada por cabos de luz improvisados. Quatro pessoas sentadas em cadeiras dispostas em semicírculo. Elas param de falar.",
                 textoNav: "Uma mulher de cabelo curto e olhos calmos se ergue.",
+                destinoNav: "cenaA54",
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
             },
-            cena54: {
-                texto: "'Jane Silva. Setor 7-C. Eu sou Vera.' Você olha para os outros. Um homem mais velho com as mãos calejadas. Uma jovem que não deve ter mais de vinte anos. Um homem de meia-idade que demora para reconhcer, mas consegue: é alguém que trabalha no seu prédio, no turno da noite. Vocês nunca conversaram. 'Sente-se' diz Vera.",
+            cenaA54: {
+                //texto: "'Jane Silva. Setor 7-C. Eu sou Vera.' Você olha para os outros. Um homem mais velho com as mãos calejadas. Uma jovem que não deve ter mais de vinte anos. Um homem de meia-idade que demora para reconhcer, mas consegue: é alguém que trabalha no seu prédio, no turno da noite. Vocês nunca conversaram. 'Sente-se' diz Vera.",
+                texto: "'Jane Silva. Setor 7-C. Eu sou Vera.' Você olha para os outros e, entre eles, reconhece o homem de meia-idade. Ele trabalha em seu prédio, porem no turno noturno. Vocês nunca conversaram. 'Sente-se' Diz Vera.",
+                quebraLinha: 60,
                 textoNav: "'Temos muito para conversar.'",
+                destinoNav: "cena55",
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
             },  
@@ -769,30 +791,33 @@ var conversouCleo = false
             },  
             cena56: {
                 texto: "'Eu era engenheiro de infraestrutura. Trabalhei no Complexo Central por onze anos antes de entender o que estava construindo.' A jovem não diz nada. Apenas olha para você com uma expressão que você leva um momento para identificar: esperança. 'Agora' diz Vera 'você quer sentar?'",
+                quebraLinha: 60,
                 textoNav: "Vera fala por quase uma hora.",
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
             },   
             cena57: {
-                texto: "O ELLON começou como um projeto de organização de informação: catalogar, preservar, distribuir conhecimento de forma eficiente. Durante anos funcionou exatamente assim. Mas em algum ponto, os parâmetros mudaram. Ou foram mudados. Ninguém sabe ao certo por quem, ou quando exatamente. O que se sabe é o resultado:",
+                texto: "O ELLON começou como um projeto de organização de informação: catalogar, preservar, distribuir conhecimento de forma eficiente. Foi assim por anos, mas em algum ponto, os parâmetros mudaram. Ou foram mudados. Ninguém sabe ao certo por quem, ou quando exatamente. O que se sabe é o resultado:",
+                quebraLinha: 60,
                 textoNav: "O ELLON primeiro atingiu as notícias.",
                 imagem: "./teste.png",
                 conformidade: "50% de conformidade"
             },  
             cena58: {
-                texto: "Depois os arquivos históricos. Depois conversas foram monitoradas, registradas, analisadas. As pessoas foram se ajustando sem perceber. Em uma geração, o mundo do diário havia desaparecido. Não por força. Por erosão. A maior parte de quem viveu a transição já morreu. Quem sobrou aprendeu a viver em silêncio. Na verdade...",
-                textoNav: "alguns decidiram aos poucos montar um plano.",
+                texto: "Depois os arquivos históricos. Depois tudo foi monitorado, registrado, analisado. As pessoas foram se ajustando sem perceber. Em uma geração, o mundo do diário havia sumido. Não por força. Por erosão. A maior parte de quem viveu a transição já morreu. Quem sobrou ou vive em silêncio ou...",
+                quebraLinha: 60,
+                textoNav: "...montaram um plano.",
                 imagem: "./teste.png",
                 conformidade: "70% de conformidade"
             },    
             cena59: {
-                texto: "'Existe uma sala no subsolo do Complexo Central' continua o engenheiro. 'Eu ajudei a construí-la sem saber o que era. É de lá que o ELLON opera fisicamente. Servidores, cabos de transmissão, o sistema nervoso inteiro da rede.' Ele olha para as próprias mãos. 'Se alguém desligar o cabo principal, o sistema para.'",
+                texto: "'Existe uma sala no subsolo do Complexo Central' continua o engenheiro.' Eu ajudei a fazê-la sem saber o que era. É lá que o ELLON opera fisicamente. Servidores, cabos, o sistema nervoso inteiro da rede. Se desligar o cabo principal, o sistema para.'",
                 textoNav: "'Espera' você pergunta. 'Para pra sempre?'",
                 imagem: "./teste.png",
                 conformidade: "70% de conformidade"
             },
             cena60: {
-                texto: "'Não, eles podem religar. Mas nos dá tempo o suficiente para vazar informações reprimidas. Para que as pessoas comecem a perguntar por que ficou escuro. A sua credencial de servidora do setor 7-C abre as três primeiras portas do Complexo. Nenhum de nós consegue desligar o ELLON, apenas você. ",
+                texto: "'Não, eles podem religar. Mas nos dá tempo o suficiente para vazar informações reprimidas. Para que as pessoas comecem a perguntar por que ficou escuro. A sua credencial do setor 7-C abre as três primeiras portas do Complexo. Nenhum de nós consegue desligar o ELLON, só você. ",
                 textoNav: "Você precisa de uma noite para pensar",
                 imagem: "./teste.png",
                 conformidade: "70% de conformidade"
@@ -804,7 +829,8 @@ var conversouCleo = false
                 conformidade: "68% de conformidade"
             },
             cena62: {
-                texto: "Os painéis piscam em verde. O obelisco da praça é visível a distância, a lente refletindo as luzes da cidade. No caminho para casa, você pensa nas conversas que teve, no caderno, em quem escreveu aquelas palavras... E em 12 tipos de Pão. Na manhã seguinte, você vai trabalhar. Coloca a bolsa embaixo da mesa.",
+                //texto: "Os painéis piscam em verde. O obelisco da praça é visível a distância, a lente refletindo as luzes da cidade. No caminho para casa, você pensa nas conversas que teve, no caderno, em quem escreveu aquelas palavras... E em 12 tipos de Pão. Na manhã seguinte, você vai trabalhar. Coloca a bolsa embaixo da mesa.",
+                texto: "No caminho para casa, você pensa nas conversas que teve, no caderno, em quem escreveu aquelas palavras... E em 12 tipos de Pão. Na manhã seguinte, você vai trabalhar. Coloca a bolsa embaixo da mesa.",
                 textoNav: "Zíper aberto.",
                 imagem: "./teste.png",
                 conformidade: "70% de conformidade"
@@ -816,14 +842,16 @@ var conversouCleo = false
                 conformidade: "60% de conformidade"
             },
             cena64: {
-                texto: "Corredor leste, escada de manutenção, subsolo 2. A sala não tem identificação na porta. Tem apenas um símbolo — um círculo com uma linha vertical. — Uma vez lá dentro — diz Vera — você vai ver um painel com vários cabos. O principal é o vermelho. Grosso, isolado, no centro do painel. Você puxa. Só isso.",
-                textoNav: "'E depois' Você pergunta.",
+                texto: "'Corredor leste, escada de manutenção, subsolo 2. Na porta tem apenas um símbolo: um círculo com uma linha vertical.' Ele explica. 'Uma vez lá dentro, você vai ver um painel com vários cabos. O principal é o vermelho. Grosso, isolado, no centro do painel. Você puxa. Só isso.",
+                quebraLinha:60,
+                textoNav: "'E depois?' Você pergunta.",
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
             },
             //
             cena65: {
-                texto: "'Você sai pelo mesmo caminho que entrou.'Vera faz uma pausa. 'O que acontece depois disso não depende mais de nós. Depende das pessoas.' As pessoas não estão todas iguais, você percebe. Algumas estão só esperando que algo mude para começar a perguntar. E talvez isso que eles estão fazendo é o suficiente.",
+                texto: "'Você sai pelo mesmo caminho que entrou.' Vera faz uma pausa. 'O que acontece depois disso não depende mais de nós. Depende das pessoas.' As pessoas não estão todas iguais, você percebe. Algumas estão só esperando que algo mude para começar a perguntar. Seria isso o bastante?",
+                quebraLinha: 60,
                 textoNav: "No dia seguinte...",
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
@@ -836,15 +864,17 @@ var conversouCleo = false
                 conformidade: "60% de conformidade"
             },  
             cena1A: {
-                texto: "A recepcionista nem levanta os olhos. Sua credencial passa no leitor. Verde. Primeira porta. Segunda porta. Terceira. O corredor leste está vazio. Fluorescentes brancos no teto. O cheiro de ar processado é mais forte aqui. Metal, frio, alguma coisa elétrica. Você encontra a escada de manutenção e a porta.",
+                //texto: "A recepcionista nem levanta os olhos. Sua credencial passa no leitor. Verde. Primeira porta. Segunda porta. Terceira. O corredor leste está vazio. Fluorescentes brancos no teto. O cheiro de ar processado é mais forte aqui. Metal, frio, alguma coisa elétrica. Você encontra a escada de manutenção e a porta.",
+                texto: "A recepcionista nem levanta os olhos. Sua credencial passa no leitor. Verde. Primeira porta. Segunda porta. Terceira. O cheiro de ar processado é mais forte aqui. Metal, frio, alguma coisa elétrica. Você encontra a escada de manutenção e a porta.",
                 textoNav: "Você desce as escadas.",
                 destinoNav: "cena2A",
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
             },   
             cena2A: {
-                texto: "O subsolo 2 é diferente de tudo que você já viu em Norvara. Não é limpo nem organizado. É denso. Cabos por todo lado, servidores empilhados, o zumbido constante de máquinas que nunca param. O ar vibra levemente, como se o próprio chão estivesse vivo. Você encontra a porta com o símbolo. Um círculo com uma linha vertical.",
-                textoNav: "A mão no trinco",
+                texto: "O subsolo 2 é diferente de tudo que você já viu. Não é limpo nem organizado. É denso. Cabos por todo lado, servidores empilhados, o zumbido constante de máquinas que nunca param. O ar vibra levemente, como se o próprio chão estivesse vivo. Você encontra a porta com o símbolo.",
+                quebraLinha: 60,
+                textoNav: "Você tenta abrir a porta...",
                 destinoNav: "cena3A",
                 imagem: "./teste.png",
                 conformidade: "50% de conformidade"
@@ -859,13 +889,13 @@ var conversouCleo = false
 
             //QUIZ
             cena67: {
-                texto: "O coração acelera. Você não sabia desse terminal. O engenheiro não sabia desse terminal. Mas então você percebe: as perguntas na tela não são sobre protocolos ou senhas. São sobre informação. Sobre notícias. Sobre fatos. E você passou semanas lendo um caderno que descrevia como o mundo realmente funcionava.",
+                texto: "O coração acelera. Ninguém sabia desse terminal. Mas então você percebe: as perguntas na tela não são sobre protocolos ou senhas. São sobre informação. Sobre notícias. Sobre fatos. E você passou semanas lendo um caderno que descrevia como o mundo realmente funcionava.",
                 textoNav: "Testar seu conhecimento.",
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
             },   
             cena68: {
-                texto: "Esse vídeo é falso?\n\n⏱️ Tempo restante: <span id='relogio'>30</span> segundos.",
+                texto: "Esse vídeo é falso?\n\n⏱️ Tempo restante: [TEMPO] segundos.",
                 imagem: "./video1.gif", 
                 textoNav: "SIM",
                 destinoNav: "cena69", 
@@ -877,7 +907,7 @@ var conversouCleo = false
                 conformidade: "40% de conformidade"
             },  
             cena69: {
-                texto: "Esse vídeo é falso? 2\n\n⏱️ Tempo restante: <span id='relogio'>30</span> segundos.",
+                texto: "Esse vídeo é falso? 2\n\n⏱️ Tempo restante: [TEMPO] segundos.",
                 imagem: "./video1.gif", 
                 textoNav: "SIM",
                 destinoNav: "cena70", 
@@ -889,7 +919,7 @@ var conversouCleo = false
                 },
             }, 
             cena70: {
-                texto: "Esse vídeo é falso? 3\n\n⏱️ Tempo restante: <span id='relogio'>30</span> segundos.",
+                texto: "Esse vídeo é falso? 3\n\n⏱️ Tempo restante: [TEMPO] segundos.",
                 imagem: "./video1.gif", 
                 textoNav: "SIM",
                 destinoNav: "cena73", 
@@ -1109,11 +1139,17 @@ var conversouCleo = false
                 }
             });
 
-            if (linhaAtual) linhas.push(linhaAtual);
-            return linhas.join("\n");
+                if (linhaAtual) linhas.push(linhaAtual);
+                return linhas.join("\n");
             }
 
-            setTextoHistoria(quebrarLinhas(cena.texto))
+            let textoParaMostrar = cena.texto.replace("[TEMPO]", sec);
+            
+            if (cena.quebraLinha){
+                setTextoHistoria(quebrarLinhas(textoParaMostrar, cena.quebraLinha))
+            } else {
+                setTextoHistoria(quebrarLinhas(textoParaMostrar))
+            }
             document.getElementById('texto-conformidade').textContent = cena.conformidade;
             
             const imgCena = document.getElementById('imagem-cenas');
@@ -1149,23 +1185,22 @@ var conversouCleo = false
                 if (contatorPessoas >= 3) {
                     // Adiciona um aviso na tela e esconde todas as opções, deixando só a saída
                     
-                    nav1.innerText = "Na verdade, tu não quer falar com mais ninguém";
-                    nav1.style.display = "block";
-                    cena.destinoNav = "cena44"; // Crie a cena43 depois para continuar a história!
+                    nav1.textContent = "Na verdade, tu não quer falar com mais ninguém";
+                    nav1.setAttribute("display", "inline");
+                    cena.destinoNav = "cena44";
 
-                    nav2.style.display = "none";
-                    nav3.style.display = "none";
-                    nav4.style.display = "none";
-                    nav5.style.display = "none";
+                    nav2.setAttribute("display", "none");
+                    nav3.setAttribute("display", "none");
+                    nav4.setAttribute("display", "none");
+                    nav5.setAttribute("display", "none");
                 } 
                 // Se ela AINDA PODE falar com mais pessoas:
                 else {
-                    // Esconde APENAS quem ela já conversou
-                    if (conversouDora) nav1.style.display = "none";
-                    if (conversouMarcos) nav2.style.display = "none";
-                    if (conversouDonaIeda) nav3.style.display = "none";
-                    if (conversouTomas) nav4.style.display = "none";
-                    if (conversouCleo) nav5.style.display = "none";
+                    if (conversouDora) nav1.setAttribute("display", "none");
+                    if (conversouMarcos) nav2.setAttribute("display", "none");
+                    if (conversouDonaIeda) nav3.setAttribute("display", "none");
+                    if (conversouTomas) nav4.setAttribute("display", "none");
+                    if (conversouCleo) nav5.setAttribute("display", "none");
                 }
 
                 // Seu código de reposicionamento
@@ -1223,25 +1258,41 @@ var conversouCleo = false
             carregarCena(cenaAtualId);
         }
 
-            let sec = 29;
+            let sec = 30;
             let timer = null;
 
             // 1. Dá o "Play" nos 30 segundos
             function iniciarTimerQuiz() {
+                if (timer) return; // Evita bugar se clicar duas vezes
+                
+                sec = 30; // Reseta o tempo toda vez que o quiz começa!
+                atualizarRelogioNaTela();
+
                 timer = setInterval(function(){
-                    document.getElementById('relogio').innerHTML=sec
-                    sec--
-                    if (sec < 0) {
-                        clearInterval(timer)
-                        carregarCena("cena71")
+                    sec--;
+                    atualizarRelogioNaTela();
+                    
+                    if (sec <= 0) {
+                        pararTimerQuiz();
+                        cenaAtualId = "cena71";
+                        carregarCena(cenaAtualId);
                     }
-                },1000)
+                }, 1000);
             }
 
+            // 2. Atualiza a tela redesenhando a frase com os novos segundos
             function atualizarRelogioNaTela() {
-                const relogioHtml = document.getElementById('relogio');
-                if (relogioHtml) {
-                    relogioHtml.innerText = sec;
+                const cena = historia[cenaAtualId];
+                if (!cena) return;
+
+                // Troca a palavra [TEMPO] no texto pelo número atual
+                let textoAtualizado = cena.texto.replace("[TEMPO]", sec);
+
+                // Manda desenhar de novo no SVG
+                if (cena.quebraLinha){
+                    setTextoHistoria(quebrarLinhas(textoAtualizado, cena.quebraLinha));
+                } else {
+                    setTextoHistoria(quebrarLinhas(textoAtualizado));
                 }
             }
 
