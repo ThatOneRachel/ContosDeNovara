@@ -201,6 +201,33 @@
     <path class="cls-25" d="M438.95,358.83c-1.08-1.6-2.42-3-3.96-4.17l-6.41-5.47-1.67,2.1c-.8-.11-1.62-.18-2.45-.18-9.66,0-17.48,7.83-17.48,17.48,0,2.21.43,4.31,1.17,6.26l-1.17,1.47,4.93,4.42c.56.57,1.15,1.11,1.78,1.6l.12.11h0c2.95,2.25,6.63,3.62,10.63,3.62,9.66,0,17.48-7.83,17.48-17.48,0-3.62-1.1-6.98-2.99-9.77Z"/>
     <circle class="cls-17" cx="419.48" cy="364.13" r="17.48"/>
     <image id="imagem-cenas" width="368.36" height="201.33" transform="translate(183.04 34.15) scale(1)" xlink:href="teste.png"/>
+    <g id="grid-personagens" display="none" width="368.36" height="201.33">
+      <defs>
+        <filter id="grayscale-filter">
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+      </defs>
+
+      <g id="card-marcos">
+        <image id="img-marcos" x="235.04" y="38.15" width="121.453" height="95.665" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-marcos)" xlink:href="./personagens/marcos.png"/>
+      </g>
+
+      <g id="card-tomas">
+    <image id="img-tomas" x="373.22" y="38.15" width="121.453" height="95.665" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-tomas)" xlink:href="./personagens/tomas.png"/>
+        </g>
+
+      <g id="card-dora">
+        <image id="img-dora" x="183.04" y="137.815" width="121.453" height="95.665" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-dora)" xlink:href="./personagens/dora.png"/>
+       </g>
+
+      <g id="card-donaIeda">
+        <image id="img-donaIeda" x="304.493" y="137.815" width="121.453" height="95.665" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-donaIeda)" xlink:href="./personagens/donaIeda.png"/>
+    </g>
+
+      <g id="card-cleo">
+        <image id="img-cleo" x="425.947" y="137.815" width="125.453" height="95.665" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-cleo)" xlink:href="./personagens/cleo.png"/>
+    </g>
+    </g>
     <g>
       <rect class="cls-1" x="191.18" y="342.22" width="8.52" height="43.81" rx="3.57" ry="3.57"/>
       <rect class="cls-1" x="203.51" y="342.22" width="8.52" height="43.81" rx="3.57" ry="3.57"/>
@@ -1135,6 +1162,18 @@ var conversouCleo = false
                 dadosJane.style.display = "block"
             }
 
+            // Mostra a grade de personagens apenas na cena 28, e a imagem normal nas demais
+            const imgCenaEl = document.getElementById('imagem-cenas');
+            const gridPersonagens = document.getElementById('grid-personagens');
+            if (idDaCena === "cena28") {
+                imgCenaEl.setAttribute("display", "none");
+                gridPersonagens.setAttribute("display", "inline");
+                atualizarGridPersonagens();
+            } else {
+                imgCenaEl.setAttribute("display", "inline");
+                gridPersonagens.setAttribute("display", "none");
+            }
+
             temporizadoresAtivos.forEach(timer => clearTimeout(timer));
             temporizadoresAtivos = [];
             const cena = historia[idDaCena];
@@ -1222,6 +1261,32 @@ var conversouCleo = false
             if (cena.aoEntrar) {
                 cena.aoEntrar();
             }
+        }
+
+        // Aplica/remove o filtro grayscale em cada card de personagem da cena 28,
+        // de acordo com quem já foi conversado.
+        function atualizarGridPersonagens() {
+            const mapa = [
+                { id: "img-marcos", conversou: conversouMarcos },
+                { id: "img-tomas", conversou: conversouTomas },
+                { id: "img-dora", conversou: conversouDora },
+                { id: "img-donaIeda", conversou: conversouDonaIeda },
+                { id: "img-cleo", conversou: conversouCleo }
+            ];
+
+            mapa.forEach(function(item) {
+                const img = document.getElementById(item.id);
+                if (!img) return;
+                if (item.conversou) {
+                    img.setAttribute("filter", "url(#grayscale-filter)");
+                } else {
+                    img.removeAttribute("filter");
+                }
+
+                if (contatorPessoas >= 3) {
+                    img.setAttribute("filter", "url(#grayscale-filter)");
+                }
+            });
         }
 
         function adicionarLinhaHistoria(linha) {
