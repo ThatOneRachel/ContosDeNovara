@@ -794,14 +794,14 @@ var conversouCleo = false
                 quebraLinha: 60,
                 textoNav: "Você chega a pé, às 23h58.",
                 destinoNav: "cena53",
-                imagem: "./teste.png",
+                imagem: "./beco.png",
                 conformidade: "60% de conformidade"
             },
             cena53: {
                 texto: "É um prédio baixo de concreto, sem identificação. A porta está entreaberta. Dentro, você desce uma escada. No subsolo há uma sala iluminada por cabos de luz improvisados. Quatro pessoas sentadas em cadeiras dispostas em semicírculo. Elas param de falar.",
                 textoNav: "Uma mulher de cabelo curto e olhos calmos se ergue.",
                 destinoNav: "cenaA54",
-                imagem: "./teste.png",
+                imagem: "./rebeldes1.png",
                 conformidade: "60% de conformidade"
             },
             cenaA54: {
@@ -810,20 +810,20 @@ var conversouCleo = false
                 quebraLinha: 60,
                 textoNav: "'Temos muito para conversar.'",
                 destinoNav: "cena55",
-                imagem: "./teste.png",
+                imagem: "./rebeldes1.png",
                 conformidade: "60% de conformidade"
             },  
             cena55: {
                 texto: "'Quem são vocês?' Você pergunta e Vera começa a responder 'Somos pessoas que, em algum momento, encontraram algo que não deviam encontrar. Um caderno, uma conversa, uma memória que o sistema não conseguiu apagar completamente.' Uma pausa. 'Assim como você.'",
                 textoNav: "O homem mais velho, então, fala.",
-                imagem: "./teste.png",
+                imagem: "./rebeldes1.png",
                 conformidade: "60% de conformidade"
             },  
             cena56: {
                 texto: "'Eu era engenheiro de infraestrutura. Trabalhei no Complexo Central por onze anos antes de entender o que estava construindo.' A jovem não diz nada. Apenas olha para você com uma expressão que você leva um momento para identificar: esperança. 'Agora' diz Vera 'você quer sentar?'",
                 quebraLinha: 60,
                 textoNav: "Vera fala por quase uma hora.",
-                imagem: "./teste.png",
+                imagem: "./rebeldes1.png",
                 conformidade: "60% de conformidade"
             },   
             cena57: {
@@ -843,19 +843,19 @@ var conversouCleo = false
             cena59: {
                 texto: "'Existe uma sala no subsolo do Complexo Central' continua o engenheiro.' Eu ajudei a fazê-la sem saber o que era. É lá que o ELLON opera fisicamente. Servidores, cabos, o sistema nervoso inteiro da rede. Se desligar o cabo principal, o sistema para.'",
                 textoNav: "'Espera' você pergunta. 'Para pra sempre?'",
-                imagem: "./teste.png",
+                imagem: "./rebeldes1.png",
                 conformidade: "70% de conformidade"
             },
             cena60: {
                 texto: "'Não, eles podem religar. Mas nos dá tempo o suficiente para vazar informações reprimidas. Para que as pessoas comecem a perguntar por que ficou escuro. A sua credencial do setor 7-C abre as três primeiras portas do Complexo. Nenhum de nós consegue desligar o ELLON, só você. ",
                 textoNav: "Você precisa de uma noite para pensar",
-                imagem: "./teste.png",
+                imagem: "./rebeldes1.png",
                 conformidade: "70% de conformidade"
             },
             cena61: {
                 texto: "'Uma noite. Amanhã você não encontra mais este lugar.' Vera não diz isso em tom de ameaça. É apenas um fato dito com cuidado.  'Se decidir ajudar, apareça no trabalho normalmente. Deixe sua bolsa embaixo da mesa com o zíper aberto. Alguém vai deixar as instruções.'",
                 textoNav: "Você sobre a escada e volta para a noite de Norvara.",
-                imagem: "./teste.png",
+                imagem: "./rebeldes1.png",
                 conformidade: "68% de conformidade"
             },
             cena62: {
@@ -878,7 +878,6 @@ var conversouCleo = false
                 imagem: "./teste.png",
                 conformidade: "60% de conformidade"
             },
-            //
             cena65: {
                 texto: "'Você sai pelo mesmo caminho que entrou.' Vera faz uma pausa. 'O que acontece depois disso não depende mais de nós. Depende das pessoas.' As pessoas não estão todas iguais, você percebe. Algumas estão só esperando que algo mude para começar a perguntar. Seria isso o bastante?",
                 quebraLinha: 60,
@@ -985,6 +984,7 @@ var conversouCleo = false
                 imagem: "./Tela_branca@4x.png",
                 conformidade: "10% de conformidade",
                 aoEntrar: function() {
+                    pararTimerQuiz()
                     piscarTela()
                 }
             },
