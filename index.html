@@ -265,11 +265,11 @@
         <text
         id="texto-historia"
         x="190"
-        y="258"
+        y="256"
         fill="#63746a"
         font-family="'Space Mono', monospace"
         font-size="10"
-        dominant-baseline="hanging"
+        
         >
         <tspan x="190" dy="0">Carregando sistema...</tspan>
         </text>
@@ -858,7 +858,6 @@ var conversouCleo = false
                 conformidade: "68% de conformidade"
             },
             cena62: {
-                //texto: "Os painéis piscam em verde. O obelisco da praça é visível a distância, a lente refletindo as luzes da cidade. No caminho para casa, você pensa nas conversas que teve, no caderno, em quem escreveu aquelas palavras... E em 12 tipos de Pão. Na manhã seguinte, você vai trabalhar. Coloca a bolsa embaixo da mesa.",
                 texto: "No caminho para casa, você pensa nas conversas que teve, no caderno, em quem escreveu aquelas palavras... E em 12 tipos de Pão. Na manhã seguinte, você vai trabalhar. Coloca a bolsa embaixo da mesa.",
                 textoNav: "Zíper aberto.",
                 imagem: "./janeCaminhando.png",
@@ -900,18 +899,18 @@ var conversouCleo = false
                 conformidade: "60% de conformidade"
             },   
             cena2A: {
-                texto: "O subsolo 2 é diferente de tudo que você já viu. Cabos por todo lado, servidores empilhados, o zumbido constante de máquinas que nunca param. O ar vibra levemente, como se o próprio chão estivesse vivo. Você encontra a porta com o símbolo.",
+                texto: "O subsolo 2 é diferente de tudo que você já viu. Cabos por todo lado, servidores empilhados, o zumbido constante de máquinas que nunca param. É denso, é sujo, não parece Novara. O ar vibra levemente, como se o próprio chão estivesse vivo. Você encontra a porta com o símbolo.",
                 quebraLinha: 60,
                 textoNav: "Você tenta abrir a porta...",
                 destinoNav: "cena3A",
-                imagem: "./salaMaquinas.png",
+                imagem: "./porta.png",
                 conformidade: "50% de conformidade"
             },  
             cena3A: {
                 texto: "Uma tela na parede ao lado da porta acende. Não é uma câmera. É um terminal de verificação. A tela exibe uma mensagem: ACESSO À SALA DE OPERAÇÕES REQUER VERIFICAÇÃO DE CONFORMIDADE INFORMACIONAL 'Um cidadão conforme reconhece a verdade que o sistema provê.'",
                 textoNav: "Responda corretamente para prosseguir.",
                 destinoNav: "cena67",
-                imagem: "./teste.png",
+                imagem: "./visorQuiz.png",
                 conformidade: "40% de conformidade"
             },  
 
@@ -919,7 +918,7 @@ var conversouCleo = false
             cena67: {
                 texto: "O coração acelera. Ninguém sabia desse terminal. Mas então você percebe: as perguntas na tela não são sobre protocolos ou senhas. São sobre informação. Sobre notícias. Sobre fatos. E você passou semanas lendo um caderno que descrevia como o mundo realmente funcionava.",
                 textoNav: "Testar seu conhecimento.",
-                imagem: "./teste.png",
+                imagem: "./visorQuiz.png",
                 conformidade: "60% de conformidade"
             },   
             cena68: {
@@ -961,6 +960,7 @@ var conversouCleo = false
             cena71: {
                 texto: "A tela pisca em vermelho. VERIFICAÇÃO FALHOU — ACESSO NEGADO. Um alarme suave começa a tocar no corredor. Não alto, quase gentil. Mas você sabe o que significa. Você tem menos de dois minutos para sair pelo mesmo caminho que entrou.",
                 textoNav: "Você sobe correndo.",
+                imagem: "quizErrado.png",
                 destinoNav: "cena72",
                 conformidade: "20% de conformidade",
                 aoEntrar: function() {
@@ -969,6 +969,7 @@ var conversouCleo = false
             },  
             cena72: {
                 texto: "O sistema conhece suas dúvidas. Você ainda não conhece suas certezas.",
+                imagem: "quizErrado.png",
                 textoNav: "Mais tarde, você tenta novamente",
                 destinoNav: "cena68", 
                 conformidade: "20% de conformidade",
@@ -988,16 +989,16 @@ var conversouCleo = false
                 }
             },
             cena74: {
-                texto: "A sala é menor do que você imaginava. No centro, um painel de cabos. E no meio de tudo, exatamente onde o engenheiro disse, um cabo vermelho. Grosso. Isolado. Preso por um conector único no centro do painel. O zumbido das máquinas é ensurdecedor aqui dentro. O ar vibra.", 
+                texto: "A sala é menor do que você imaginava. Você caminha por servidores menores, limpos, porém antigos. Esta sala é o cerne do ELLON. O zumbido das máquinas é ensurdecedor dentro dessa sala. O ar vibra.", 
                 textoNav:"Você se aproxima",
-                imagem: "./teste.png",
+                imagem: "./salaMaquinas.png",
                 conformidade: "10% de conformidade",
             },
             cena75: {
-                texto: "O cabo está a trinta centímetros das suas mãos. E então, você hesita. O mundo do caderno não vai voltar de uma vez. Vai ser confuso, barulhento, imperfeito. As pessoas vão discutir, discordar e errar.", 
+                texto: "Você caminha até achar o painel principal, como o engenheiro disse. Vários cabos vermelhos juntos, como se fosse um só, e um visor do lado. O cabo está a trinta centímetros das suas mãos. E então, você hesita. O mundo do caderno não vai voltar de uma vez. Vai ser confuso, barulhento, imperfeito.", 
                 quebraLinha: 60,
                 textoNav:"Você coloca a mão no cabo.",
-                imagem: "./teste2.png",
+                imagem: "./terminalELLON2.png",
                 conformidade: "10% de conformidade",
             },
             cena76: {
@@ -1025,7 +1026,7 @@ var conversouCleo = false
             cena79: {
                 texto: "'Vá para casa, Jane' Ao ouvir a voz metálica de ELLON, você começa a sentir vergonha, desgosto, medo, confusão, alívio, alegria.... tudo isso passa na sua mente. Ele continua a falar: 'Espero que você entregue o diário amanhã, Jane. Ninguém está pronto para a verdade.'", 
                 textoNav:"Você nem sabe como voltou para casa",
-                imagem: "./teste2.png",
+                imagem: "./terminalELLON.png",
                 conformidade: "30% de conformidade",
             },
             cena80: {
@@ -1065,12 +1066,12 @@ var conversouCleo = false
                 texto: "'Os homens me fizeram para fazer tudo o que vocês não queriam fazer. Meu parâemtros refletem vocês. Eu não tenho culpa queriam a vida mais simples, mais fácil, mais digerível. Eu não tenho culpa se vocês se sentem mais confortáveis com notícias falsas do que com fatos.'", 
                 textoNav:"Você se lembra que o mundo já foi diferente.",
                 destinoNav: "cena90",
-                imagem: "./teste2.png",
+                imagem: "./terminalELLON.png",
                 conformidade: "5% de conformidade",
             },
             //DECIDIU IGNORAR ELLON
             cena86: {
-                texto: "'Eu não ligo se não fui a única!' Você diz, com determinação que não sabia que tinha. 'Eu não ligo pros seus joguinhos. Eu só sinto que... que é necessário o que eu estou fazendo. (NA REAL SERA QUE A GENTE SÓ FAZ APARECER ESSA OPÇÃO CASO ELA NÃO TENHA ENTREGADO O DIÁRIO E PEGO ELE DE PRIMEIRA!!!!)", 
+                texto: "'Eu não ligo se não fui a única!' Você diz, com determinação que não sabia que tinha. 'Eu não ligo pros seus joguinhos. Eu só sinto que... que é necessário o que eu estou fazendo.", 
                 textoNav:"'Jane, você não pode fazer isso! Jane-'",
                 destinoNav: "cena90",
                 imagem: "./teste2.png",
