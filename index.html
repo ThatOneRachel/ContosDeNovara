@@ -127,11 +127,58 @@
       .cls-27 {
         fill: #000d15;
       }
+
+      /* ===== TELA DE START ===== */
+      #tela-start {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        z-index: 1000;
+      }
+
+      #logo-novara {
+        opacity: 0;
+        max-width: 70vw;
+        max-height: 50vh;
+        transition: opacity 1.5s ease;
+      }
+
+      #botaoComecar {
+        opacity: 0;
+        background: transparent;
+        border: 1px solid #63746a;
+        color: #63746a;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-family: 'Space Mono', monospace;
+        font-size: 14px;
+        transition: opacity 1.5s ease, background 0.3s;
+      }
+
+      #botaoComecar:hover {
+        background: rgba(99, 116, 106, 0.15);
+      }
     </style>
 </head>
 <body>
 
-    <svg id="interfacePrincipal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.28 419.53" style="opacity: 1; display: block">
+    <!-- ===== TELA DE START ===== -->
+    <div id="tela-start">
+        <img id="logo-novara" src="./novara.png" alt="Contos de Novara">
+        <button id="botaoComecar" onclick="iniciarJogo()">
+            CLIQUE AQUI PARA COMEÇAR
+        </button>
+    </div>
+
+    <svg id="interfacePrincipal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.28 419.53" style="opacity: 1; display: none">
     <linearGradient id="linear-gradient" x1="69.64" y1="342.69" x2="133.41" y2="278.92" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#000"/>
       <stop offset=".24" stop-color="#090909" stop-opacity=".96"/>
@@ -388,6 +435,25 @@
     </div>
     <script>
 
+// ===== TELA DE START =====
+// Sequência: 3s tela preta -> imagem aparece -> 3s depois -> botão aparece -> 
+// ao clicar, esconde a tela de start e mostra o jogo (SVG principal), iniciando a cena1.
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.getElementById('logo-novara').style.opacity = 1;
+    }, 3000);
+
+    setTimeout(function() {
+        document.getElementById('botaoComecar').style.opacity = 1;
+    }, 6000);
+});
+
+function iniciarJogo() {
+    document.getElementById('tela-start').style.display = 'none';
+    document.getElementById('interfacePrincipal').style.display = 'block';
+    carregarCena(cenaAtualId);
+}
+
 
 //AQUI PARA TROCAR AS CENAS
 let cenaAtualId = "cena1"; 
@@ -402,8 +468,68 @@ var conversouDonaIeda = false
 var conversouTomas = false
 var conversouCleo = false
 
+// ==========================================
+// SISTEMA DE ÁUDIO
+// ==========================================
+let trilhaFundo = null;
+let somAmbiente = null;
+
+// Toca a música principal do jogo (ex: o ruído do ELLON ou música tensa)
+function tocarTrilha(caminhoAudio) {
+    if (trilhaFundo && trilhaFundo.src.includes(caminhoAudio)) return;
+    if (trilhaFundo) trilhaFundo.pause();
+
+    trilhaFundo = new Audio(caminhoAudio);
+    trilhaFundo.loop = true;
+    trilhaFundo.volume = 0.3; // Volume mais baixo para não atrapalhar a leitura
+    
+    // Tenta tocar (o navegador pode bloquear até o primeiro clique)
+    let playPromise = trilhaFundo.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(error => console.log("Áudio aguardando interação."));
+    }
+}
+
+function pararTrilha() {
+    if (trilhaFundo) {
+        trilhaFundo.pause();
+        trilhaFundo = null;
+    }
+}
+
+// Toca um som de ambiente secundário (ex: barulho de escritório ou lâmpada)
+function tocarAmbiente(caminhoAudio) {
+    if (somAmbiente && somAmbiente.src.includes(caminhoAudio)) return;
+    if (somAmbiente) somAmbiente.pause();
+
+    somAmbiente = new Audio(caminhoAudio);
+    somAmbiente.loop = true;
+    somAmbiente.volume = 0.5;
+    
+    let playPromise = somAmbiente.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(error => console.log("Ambiente aguardando interação."));
+    }
+}
+
+function pararAmbiente() {
+    if (somAmbiente) {
+        somAmbiente.pause();
+        somAmbiente = null;
+    }
+}
+
+// Toca efeitos sonoros rápidos (ex: virar página, passos)
+function tocarEfeito(caminhoAudio) {
+    const efeito = new Audio(caminhoAudio);
+    efeito.volume = 0.8;
+    efeito.play();
+}
+// ==========================================
+
 //COMEÇO DA HISTÓRIA
         const historia = {
+            //ruído fundo geral é constante até o ELLON ser retirado da tomada
             cena1: {
                 texto: "",
                 textoNav:"Ano 2187. Cidade de Novara.",
@@ -429,6 +555,7 @@ var conversouCleo = false
                 conformidade: "100% de conformidade"
             },
             cena5: {
+                //ambienteEscritorio começa e termina nessa cena
                 texto: "[8:00]",
                 textoNav:"",
                 imagem: "./escritorio.png",
@@ -459,6 +586,7 @@ var conversouCleo = false
                 conformidade: "100% de conformidade"
             },
             cena8: {
+                //ambienteEscritorio começa e termina nessa cena
                 texto: "[08:00]",
                 textoNav:"",
                 imagem: "./escritorio.png",
@@ -536,6 +664,7 @@ var conversouCleo = false
                 conformidade: "80% de conformidade"
             },
             cena19: {
+                //virarPagina começa e termina aqui
                 texto: "Você abre em uma página aleatória e seus olhos pousam em uma linha escrita à mão, uma caligrafia irregular, humana, apressada. O obelisco no centro da praça pisca uma vez. Duas vezes.",
                 textoNav: "A lente reflete a sua imagem ao ir pra casa.",
                 imagem: "./fraseLivro1.png",
@@ -555,24 +684,27 @@ var conversouCleo = false
                 conformidade: "72% de conformidade",
             },
             cena22: {
+                //virarPagina começa e termina aqui
                 texto: "Doze tipos de pão. No seu terminal de nutrição há um. Balanceado, eficiente, sem desperdício.",
                 textoNav: "Próxima página",
                 imagem: "./diario1.png",
                 conformidade: "71% de conformidade"
             },
             cena23: {
+                //virarPagina começa e termina aqui
                 texto: "Crianças que correm. Pessoas que discutem. Pessoas que riem depois de discutir. Você não lembra a última vez que viu uma pessoa rir ou discutir.",
                 textoNav: "Próxima página",
                 imagem: "./diario2.png",
                 conformidade: "79% de conformidade",
             },
-            cena24: {
+            cena24: {//virarPagina começa e termina aqui
                 texto: "O diário descreve um mundo onde as pessoas escolhiam o que comer, o que vestir, para onde ir. Músicas que ninguém havia aprovado. Livros sobre assuntos inúteis. Conversas sem propósito produtivo. Eleições onde o resultado era incerto.",
                 textoNav:"Próxima página.",
                 imagem: "./diario3.png",
                 conformidade: "78% de conformidade"
             }, 
             cena25: {
+                //virarPagina começa e termina aqui
                 texto: "A caligrafia fica trêmula.",
                 textoNav:"Você fecha o diário.",
                 imagem: "./diario4.png",
@@ -586,6 +718,7 @@ var conversouCleo = false
             }, 
             //A PARTIR DAQUI
             cena27: {
+                //ambienteEscritorio começa e termina aqui
                 texto: "Seu trabalho não tem mais o mesmo sentido. Tudo que você processa, coordenadas, registros, dados de conformidade, agora têm outro peso. Você pensa na palavra que o caderno usava para descrever o que existia antes: escolha. Uma palavra que você conhece, mas que nunca havia parecido real.",
                 quebraLinha: 61,
                 textoNav:"Você precisa falar com alguém",
@@ -640,7 +773,7 @@ var conversouCleo = false
             }, 
 
             // --- ROTA DO MARCUS --- LAYOUT OK
-            cena32: {
+            cena32: {//ambienteEscritorio começa aqui
                 texto: "Marcos, 41 anos. Colega de trabalho. Processador de dados, setor 7-B. Você espera Marcos depois do expediente. Ele é quieto, eficiente, nunca causa problemas — mas às vezes você nota que ele demora um pouco a mais antes de enviar os arquivos. Você conta sobre o diário em voz baixa.",
                 quebraLinha: 60,
                 textoNav: "Ao terminar, ele pergunta: 'Onde guardou?'",
@@ -654,6 +787,7 @@ var conversouCleo = false
                 conformidade: "78% de conformidade"
             },
             cena34: {
+                //ambiente escritorio termina aqui
                 texto: "Você fica no corredor vazio, com o coração acelerado, e sem conseguir perguntar mais nada para ele. A reação dele não foi de indiferença. Foi de medo. E medo, você percebe, significa que ele sabe de alguma coisa.",
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
@@ -708,6 +842,7 @@ var conversouCleo = false
 
             // --- ROTA DA CLEO ---
             cena41: {
+                //ambienteEscritorio começa aqui
                 texto: "Cleo, 48 anos. Supervisora do setor 7-C. Sempre eficiente. Sempre correta. Você não sabe bem por que escolhe Cleo. Talvez porque ela seja a pessoa mais inteligente que você conhece. Talvez porque, no fundo, você queira que alguém com autoridade confirme que o que você sentiu faz sentido.",
                 textoNav: "Você conta sobre o diário para ela.",
                 imagem: "./escritorioCleo.png",
@@ -721,6 +856,7 @@ var conversouCleo = false
                 conformidade: "75% de conformidade"
             }, 
             cena43: {
+                //ambienteEscritorio termina
                 texto: "'Recomendo que você entregue o objeto ao Departamento de Conformidade e registre onde o encontrou. Esse é o procedimento correto. Se fizer isso agora, isso fica entre nós.' O tom não é ameaçador. É quase gentil. O que o torna mais assustador.",
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
@@ -766,6 +902,7 @@ var conversouCleo = false
             },
             // vai ser imagem
             cena49: {
+                //passos começa aqui e termina aqui
                 texto: "Alguma pessoa deixa um papel no seu bolso e some, como se nunca tivesse existido. Você entra em pânico, procura a fonte de luz mais próxima e lê. É um papel com apenas quatro linhas escritas.",
                 quebraLinha: 60,
                 textoNav: "Atrás, um endereço. Uma hora. Hoje, a meia noite",
@@ -790,6 +927,7 @@ var conversouCleo = false
             },
             // --- HISTÓRIA LINEAR DE NOVO ---- 
             cena52: {
+                //sonsLampada começa aqui
                 texto: "O endereço fica em uma parte da cidade que você nunca havia visitado. Não porque fosse proibido, nenhum lugar em Novara é formalmente proibido. Mas simplemente nenhuma rota passava por ali. Nenhum terminal de alimentação, nenhum posto de conformidade. O tipo de lugar que existe, porém não.",
                 quebraLinha: 60,
                 textoNav: "Você chega a pé, às 23h58.",
@@ -852,6 +990,7 @@ var conversouCleo = false
                 conformidade: "70% de conformidade"
             },
             cena61: {
+                
                 texto: "'Uma noite. Amanhã você não encontra mais este lugar.' Vera não diz isso em tom de ameaça. É apenas um fato dito com cuidado.  'Se decidir ajudar, apareça no trabalho normalmente. Deixe sua bolsa embaixo da mesa com o zíper aberto. Alguém vai deixar as instruções.'",
                 textoNav: "Você sobre a escada e volta para a noite de Norvara.",
                 imagem: "./veraFalando.png",
@@ -877,6 +1016,7 @@ var conversouCleo = false
                 conformidade: "60% de conformidade"
             },
             cena65: {
+                //sonsLampada termina aqui
                 texto: "'Você sai pelo mesmo caminho que entrou.' Vera faz uma pausa. 'O que acontece depois disso não depende mais de nós. Depende das pessoas.' As pessoas não estão todas iguais, você percebe. Algumas estão só esperando que algo mude para começar a perguntar. Seria isso o bastante?",
                 quebraLinha: 60,
                 textoNav: "No dia seguinte...",
@@ -899,6 +1039,7 @@ var conversouCleo = false
                 conformidade: "60% de conformidade"
             },   
             cena2A: {
+                //descendoEscadas começa e termina aqui
                 texto: "O subsolo 2 é diferente de tudo que você já viu. Cabos por todo lado, servidores empilhados, o zumbido constante de máquinas que nunca param. É denso, é sujo, não parece Novara. O ar vibra levemente, como se o próprio chão estivesse vivo. Você encontra a porta com o símbolo.",
                 quebraLinha: 60,
                 textoNav: "Você tenta abrir a porta...",
@@ -916,6 +1057,7 @@ var conversouCleo = false
 
             //QUIZ
             cena67: {
+                //janeTensa começa e termina aqui
                 texto: "O coração acelera. Ninguém sabia desse terminal. Mas então você percebe: as perguntas na tela não são sobre protocolos ou senhas. São sobre informação. Sobre notícias. Sobre fatos. E você passou semanas lendo um caderno que descrevia como o mundo realmente funcionava.",
                 textoNav: "Testar seu conhecimento.",
                 imagem: "./visorQuiz.png",
@@ -958,6 +1100,7 @@ var conversouCleo = false
                 },
             },  
             cena71: {
+                //janeTensa começa e termina aqui
                 texto: "A tela pisca em vermelho. VERIFICAÇÃO FALHOU — ACESSO NEGADO. Um alarme suave começa a tocar no corredor. Não alto, quase gentil. Mas você sabe o que significa. Você tem menos de dois minutos para sair pelo mesmo caminho que entrou.",
                 textoNav: "Você sobe correndo.",
                 imagem: "quizErrado.png",
@@ -1002,6 +1145,7 @@ var conversouCleo = false
                 conformidade: "10% de conformidade",
             },
             cena76: {
+                //janeTensa começa aqui
                 texto: "'Você não quer realmente fazer isso, quer?' Expantada, você procura pela voz metálica ao redor. Não tem mais ninguém na sala além de você e... e do ELLON. 'Ah, Jane. Eu te conheci antes de você nascer. Seus gostos, seus pensamentos, seus medos. Você sempre teve esse desejo pelo imperfeito.'", 
                 quebraLinha: 60,
                 textoNav:"A máquina *ri*.",
@@ -1015,6 +1159,7 @@ var conversouCleo = false
                 conformidade: "10% de conformidade",
             },
             cena78: {
+                //janeTensa termina aqui
                 texto: "'Você acha que não tiveram pessoas que tentaram a mesma coisa? Você acha que ninguém nos últimos anos achou algum objeto maldito, sujo de um outro tempo? Você não foi a primeira e nem será a última. Eventualmente, todos percebem como amam o conforto. Amam as mentiras.'", 
                 quebraLinha: 60,
                 textoNav:"Você desiste",
@@ -1078,11 +1223,13 @@ var conversouCleo = false
                 conformidade: "2% de conformidade",
             },
             cena90: {
+                //logo quando entrar, tocar som tirar cabo
                 texto: "Você puxa o cabo", 
                 textoNav:"",
                 imagem: "./janeEmpoderada.png",
                 conformidade: "5% de conformidade",
                 aoEntrar: function() {
+                    //aumentar o tempo de tela escura para 10 segundo e, no terceiro segundo, tocar o som desligandoELLON
                     matarELLON()
                 }
             },
@@ -1177,6 +1324,16 @@ var conversouCleo = false
             temporizadoresAtivos.forEach(timer => clearTimeout(timer));
             temporizadoresAtivos = [];
             const cena = historia[idDaCena];
+
+            // --- GERENCIADOR AUTOMÁTICO DE ÁUDIO ---
+            if (cena.trilha) tocarTrilha(cena.trilha);
+            if (cena.pararTrilha) pararTrilha();
+
+            if (cena.ambiente) tocarAmbiente(cena.ambiente);
+            if (cena.pararAmbiente) pararAmbiente();
+
+            if (cena.efeito) tocarEfeito(cena.efeito);
+            // ---------------------------------------
 
             if (!cena) {
                 console.error("Erro: A cena " + idDaCena + " não existe!");
@@ -1426,9 +1583,6 @@ var conversouCleo = false
                     window.location.reload()
                 }, 1500)
             }
-
-        // Inicializa o jogo
-        carregarCena(cenaAtualId);
     </script>
 </body>
 </html>
