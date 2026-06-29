@@ -534,7 +534,8 @@ function tocarEfeito(caminhoAudio) {
                 texto: "",
                 textoNav:"Ano 2187. Cidade de Novara.",
                 imagem: "./imagem1.jpeg",
-                conformidade: "100% de conformidade"
+                conformidade: "100% de conformidade",
+                trilha: "./audios/ruidoFundoGeral.mp3" 
             },
             cena2: {
                 texto: "O sol nasce todos os dias no mesmo horário. As notícias são sempre boas. A economia cresce 3,2% ao ano, sem exceção. Os crimes caem consistentemente. Todo mundo sabe disso porque o ELLON disse.",
@@ -560,6 +561,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav:"",
                 imagem: "./escritorio.png",
                 conformidade: "100% de conformidade",
+                ambiente: "./audios/ambienteEscritorio.mp3",
                 aoEntrar: function() {
                 temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[10:00]"), 1000));
                 temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[12:00]"), 2000));
@@ -577,7 +579,8 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav:"Você leva seis minutos até seu apartamento",
                 imagem: "./janeCaminhando.png",
-                conformidade: "100% de conformidade"
+                conformidade: "100% de conformidade",
+                pararAmbiente: true
             }, 
             cena7: {
                 texto: "Hoje o percurso é idêntico a todos os outros. Você chega em casa, aquece uma refeição padrão no terminal de nutrição, assiste ao boletim noturno do ELLON. Tudo bem. Tudo sob controle. Tudo conforme o esperado. Você dorme sem sonhos.",
@@ -591,6 +594,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav:"",
                 imagem: "./escritorio.png",
                 conformidade: "100% de conformidade",
+                ambiente: "./audios/ambienteEscritorio.mp3",
                 aoEntrar: function() {
                 temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[10:00]"), 1000));
                 temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[12:00]"), 2000));
@@ -608,7 +612,8 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav:"A Praça Central de Novara é simétrica e limpa.",
                 imagem: "./janeCaminhando.png",
-                conformidade: "100% de conformidade"
+                conformidade: "100% de conformidade",
+                pararAmbiente: true
             }, 
             cena10: {
                 texto: "As árvores são podadas em ângulos precisos. Os bancos estão espaçados em intervalos regulares, calculados para o máximo de conforto com o mínimo de aglomeração. No centro, um obelisco de aço espelhado reflete o céu e os rostos das pessoas que passam. No topo do obelisco, uma lente.",
@@ -634,7 +639,7 @@ function tocarEfeito(caminhoAudio) {
             //ajeitar o layout
             cena14: {
                 texto: "Durante a janta, o boletim do ELLON informa que a produtividade do setor 7-C aumentou 0,4% no último trimestre. Você é mencionada entre as melhores servidoras. Você deveria se sentir bem. Você fica olhando para o teto por horas antes de conseguir dormir.",
-                textoNav:"Pelo menos tenta esquecer.",
+                textoNav:"Você tenta esquecer o objeto estranho.",
                 imagem: "./refeicao.png",
                 conformidade: "99% de conformidade"
             },
@@ -669,6 +674,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "A lente reflete a sua imagem ao ir pra casa.",
                 imagem: "./fraseLivro1.png",
                 conformidade: "75% de conformidade",
+                efeito: "./audios/virarPagina.mp3"
             },
             cena20: {
                 texto: "Você fecha a porta do apartamento e não acende as luzes. Fica parada no escuro por um momento, a bolsa ainda no ombro, sentindo o peso retangular contra o seu quadril. O terminal de voz na parede sussurra automaticamente: Bem-vinda, Jane. Temperatura ajust-'",
@@ -688,7 +694,8 @@ function tocarEfeito(caminhoAudio) {
                 texto: "Doze tipos de pão. No seu terminal de nutrição há um. Balanceado, eficiente, sem desperdício.",
                 textoNav: "Próxima página",
                 imagem: "./diario1.png",
-                conformidade: "71% de conformidade"
+                conformidade: "71% de conformidade",
+                efeito: "./audios/virarPagina.mp3"
             },
             cena23: {
                 //virarPagina começa e termina aqui
@@ -696,12 +703,14 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Próxima página",
                 imagem: "./diario2.png",
                 conformidade: "79% de conformidade",
+                efeito: "./audios/virarPagina.mp3"
             },
             cena24: {//virarPagina começa e termina aqui
                 texto: "O diário descreve um mundo onde as pessoas escolhiam o que comer, o que vestir, para onde ir. Músicas que ninguém havia aprovado. Livros sobre assuntos inúteis. Conversas sem propósito produtivo. Eleições onde o resultado era incerto.",
                 textoNav:"Próxima página.",
                 imagem: "./diario3.png",
-                conformidade: "78% de conformidade"
+                conformidade: "78% de conformidade",
+                efeito: "./audios/virarPagina.mp3"
             }, 
             cena25: {
                 //virarPagina começa e termina aqui
@@ -709,6 +718,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav:"Você fecha o diário.",
                 imagem: "./diario4.png",
                 conformidade: "75% de conformidade",
+                efeito: "./audios/virarPagina.mp3"
             },
             cena26: {
                 texto: "Lá fora, Novara dorme silenciosa. Os painéis piscam em verde suave. Você fica sentada no escuro por muito tempo, com o caderno no colo, pensando em doze tipos de pão.",
@@ -723,7 +733,8 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 61,
                 textoNav:"Você precisa falar com alguém",
                 imagem: "./escritorio.png",
-                conformidade: "85% de conformidade"
+                conformidade: "85% de conformidade",
+                ambiente: "./audios/ambienteEscritorio.mp3",
             }, 
 
             //DECISÃO ABSURDA ENORME BIZARRA
@@ -747,6 +758,7 @@ function tocarEfeito(caminhoAudio) {
 
                 imagem:  "./teste.png",
                 conformidade: "83% de conformidade",
+                pararAmbiente: true
             },
             
             // --- ROTA DA DORA --- LAYOUT OK
@@ -779,6 +791,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Ao terminar, ele pergunta: 'Onde guardou?'",
                 imagem: "./corredorMarcos.png",
                 conformidade: "80% de conformidade",
+                ambiente: "./audios/ambienteEscritorio.mp3",
             },
             cena33: {
                 texto: "'Em casa. Por quê?' Você responde. Ele olha para os lados rapidamente. 'Destrói, Jane.' A voz agora é quase um sussurro. 'Não mostra para mais ninguém. Não fala sobre isso no trabalho. Não fala sobre isso em lugar nenhum com câmera.'",
@@ -793,6 +806,7 @@ function tocarEfeito(caminhoAudio) {
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./corredorJane.png",
                 conformidade: "79% de conformidade",
+                pararAmbiente: true
             },
 
             // --- ROTA DA DONA IEDA --- LAYOUT OK
@@ -846,7 +860,8 @@ function tocarEfeito(caminhoAudio) {
                 texto: "Cleo, 48 anos. Supervisora do setor 7-C. Sempre eficiente. Sempre correta. Você não sabe bem por que escolhe Cleo. Talvez porque ela seja a pessoa mais inteligente que você conhece. Talvez porque, no fundo, você queira que alguém com autoridade confirme que o que você sentiu faz sentido.",
                 textoNav: "Você conta sobre o diário para ela.",
                 imagem: "./escritorioCleo.png",
-                conformidade: "75% de conformidade"
+                conformidade: "75% de conformidade",
+                ambiente: "./audios/ambienteEscritorio.mp3",
             }, 
             cena42: {
                 texto: "Ela ouve com atenção total, sem interromper, sem mudar a expressão. Quando você termina, ela respira fundo e olha para ti fixamente. Você sente o estômago apertar. 'Jane.' A voz é contida. 'Você é uma das melhores servidoras do setor. Eu não quero que isso mude.'",
@@ -861,7 +876,8 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./escritorioCleo.png",
-                conformidade: "75% de conformidade"
+                conformidade: "75% de conformidade",
+                pararAmbiente: true
             }, 
 
             // --- CONTINUAÇÃO DA HISTÓRIA ---
@@ -908,7 +924,8 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Atrás, um endereço. Uma hora. Hoje, a meia noite",
                 destinoNav: "cena52",
                 imagem: "./mensagemPapel.png",
-                conformidade: "70% de conformidade"
+                conformidade: "70% de conformidade", 
+                efeito: "./audios/passos.mp3"
             },
             // ----- FICAR COM DIÁRIO ------ 
             cena50: {
@@ -933,7 +950,8 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Você chega a pé, às 23h58.",
                 destinoNav: "cena53",
                 imagem: "./beco.png",
-                conformidade: "60% de conformidade"
+                conformidade: "60% de conformidade",
+                ambiente: "./audios/sonsLampada.mp3"
             },
             cena53: {
                 texto: "É um prédio baixo de concreto, sem identificação. A porta está entreaberta. Dentro, você desce uma escada. No subsolo há uma sala iluminada por cabos de luz improvisados. Quatro pessoas sentadas em cadeiras dispostas em semicírculo. Elas param de falar.",
@@ -1021,7 +1039,8 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav: "No dia seguinte...",
                 imagem: "./rebelde2.png",
-                conformidade: "60% de conformidade"
+                conformidade: "60% de conformidade",
+                pararAmbiente: true
             },  
             cena66: {
                 texto: "O Complexo Central sempre esteve ali. Você passa por ele todo dia no trajeto do trabalho. Nunca havia parecido importante. Era só mais um prédio de Novara. Agora você para na calçada em frente e olha para ele de verdade pela primeira vez.",
@@ -1045,7 +1064,8 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Você tenta abrir a porta...",
                 destinoNav: "cena3A",
                 imagem: "./porta.png",
-                conformidade: "50% de conformidade"
+                conformidade: "50% de conformidade",
+                efeito: "./audios/descendoEscadas.mp3"
             },  
             cena3A: {
                 texto: "Uma tela na parede ao lado da porta acende. Não é uma câmera. É um terminal de verificação. A tela exibe uma mensagem: ACESSO À SALA DE OPERAÇÕES REQUER VERIFICAÇÃO DE CONFORMIDADE INFORMACIONAL 'Um cidadão conforme reconhece a verdade que o sistema provê.'",
@@ -1061,7 +1081,8 @@ function tocarEfeito(caminhoAudio) {
                 texto: "O coração acelera. Ninguém sabia desse terminal. Mas então você percebe: as perguntas na tela não são sobre protocolos ou senhas. São sobre informação. Sobre notícias. Sobre fatos. E você passou semanas lendo um caderno que descrevia como o mundo realmente funcionava.",
                 textoNav: "Testar seu conhecimento.",
                 imagem: "./visorQuiz.png",
-                conformidade: "60% de conformidade"
+                conformidade: "60% de conformidade",
+                efeito: "./audios/janeTensa.mp3"
             },   
             cena68: {
                 texto: "Esse vídeo é falso?\n\n⏱️ Tempo restante: [TEMPO] segundos.",
@@ -1106,6 +1127,7 @@ function tocarEfeito(caminhoAudio) {
                 imagem: "quizErrado.png",
                 destinoNav: "cena72",
                 conformidade: "20% de conformidade",
+                efeito: "./audios/janeTensa.mp3",
                 aoEntrar: function() {
                     pararTimerQuiz()
                 },
@@ -1151,12 +1173,14 @@ function tocarEfeito(caminhoAudio) {
                 textoNav:"A máquina *ri*.",
                 imagem: "./janeVELLONsusto.png",
                 conformidade: "10% de conformidade",
+                efeito: "./audios/janeTensa.mp3"
             },
             cena77: {
                 texto: "Mas o imperfeito dói, Jane. O imperfeito machuca, a verdade é dolorosa, é poderosa.' Você não pode escutar ele. Não! 'Eu preciso fazer isso.' Você diz. 'Por mim, por todo mundo. Eu fui a que chegou mais longe de tirar os cabos e...' Com escárnio na voz, ele continua:", 
                 textoNav:"'Você acha que foi a única?'",
                 imagem: "./janeVELLONencarando.png",
                 conformidade: "10% de conformidade",
+                efeito: "./audios/janeTensa.mp3"
             },
             cena78: {
                 //janeTensa termina aqui
@@ -1167,6 +1191,7 @@ function tocarEfeito(caminhoAudio) {
                 destinoNav2: "cena86",
                 imagem: "./janeVELLONencarando.png",
                 conformidade: "10% de conformidade",
+                efeito: "./audios/janeTensa.mp3"
             },
             cena79: {
                 texto: "'Vá para casa, Jane' Ao ouvir a voz metálica de ELLON, você começa a sentir vergonha, desgosto, medo, confusão, alívio, alegria.... tudo isso passa na sua mente. Ele continua a falar: 'Espero que você entregue o diário amanhã, Jane. Ninguém está pronto para a verdade.'", 
@@ -1558,23 +1583,37 @@ function tocarEfeito(caminhoAudio) {
                 }, 2500)
             }
 
-            function matarELLON() {
+function matarELLON() {
+                // Toca o som do puxão do cabo instantaneamente!
+                tocarEfeito("./audios/puxarCabo.mp3");
+
+                //set timeout para "desligar tudo"
                 setTimeout(function() {
                         // 1. Apaga a interface do SVG
                         document.getElementById("interfacePrincipal").style.opacity = 0;
                         document.getElementById("interfacePrincipal").style.display = "none";
                         
-                        // 2. Coloca o container da tela final visível (usamos 'flex' no lugar de 'block' para a coluna funcionar)
+                        // O SVG apaga em 1.5s. Vamos tocar o som de "Desligamento" do ELLON aqui!
+                        tocarEfeito("./audios/desligandoELLON.mp3");
+                        
+                        // Para o ruído de fundo que estava tocando desde a Cena 1!
+                        pararTrilha();
+                        pararAmbiente();
+                        
+                        
+                    }, 1500);
+
+                setTimeout(function() {
+                    // 2. Coloca o container da tela final visível
                         const telaFinal = document.getElementById("tela-final");
                         telaFinal.style.display = "flex";
                         
-                        // 3. Acende a opacidade do texto e do botão quase imediatamente
+                        // 3. Acende a opacidade do texto e do botão
                         setTimeout(function() {
                             document.getElementById("fraseFinal").style.opacity = 1;
                             document.getElementById("botaoRecomecar").style.opacity = 1;
                         }, 50);
-                        
-                    }, 1500);
+                }, 10000)
             }
 
             function recomecar() {
