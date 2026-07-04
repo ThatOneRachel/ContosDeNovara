@@ -468,6 +468,8 @@ var conversouDonaIeda = false
 var conversouTomas = false
 var conversouCleo = false
 
+var conformidade = 100
+
 // ==========================================
 // SISTEMA DE ÁUDIO
 // ==========================================
@@ -525,6 +527,19 @@ function tocarEfeito(caminhoAudio) {
     efeito.volume = 0.8;
     efeito.play();
 }
+
+function calcularConformidade(valorInicial, valorAlteracao) {
+    const alteracao = Number(valorAlteracao) || 0;
+
+    return {
+        aplicar() {
+            const base = Math.min(100, Math.max(0, Number(conformidade) || 0));
+            const resultado = Math.max(0, Math.min(100, base + alteracao));
+            conformidade = resultado;
+            return `${resultado}% de conformidade`;
+        }
+    };
+}
 // ==========================================
 
 //COMEÇO DA HISTÓRIA
@@ -534,33 +549,33 @@ function tocarEfeito(caminhoAudio) {
                 texto: "",
                 textoNav:"Ano 2187. Cidade de Novara.",
                 imagem: "./imagem1.jpeg",
-                conformidade: "100% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 trilha: "./audios/ruidoFundoGeral.mp3" 
             },
             cena2: {
                 texto: "O sol nasce todos os dias no mesmo horário. As notícias são sempre boas. A economia cresce 3,2% ao ano, sem exceção. Os crimes caem consistentemente. Todo mundo sabe disso porque o ELLON disse.",
                 textoNav:"O ELLON sempre diz a verdade.",
                 imagem: "./imagem1.jpeg",
-                conformidade: "100% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             }, 
             cena3: {
                 texto: "Ele está nos painéis luminosos das ruas, na voz calma que acorda você de manhã e nos terminais de trabalho onde você passa oito horas por dia inserindo dados que não entende muito bem. Ele está em todo lugar, e isso é reconfortante.",
                 textoNav:"Você é Jane.",
                 imagem: "./imagem1.jpeg",
-                conformidade: "100% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena4: {
                 texto: "Seu trabalho é simples: os dados chegam, você os processa, eles seguem adiante. Para onde? Para o ELLON, claro. Hoje é terça-feira. Você passa pela catraca: CIDADÃ JANE SILVA",
                 textoNav:"CONFORMIDADE:100%. TENHA UM BOM DIA.",
                 imagem: "./imagem2.jpeg",
-                conformidade: "100% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena5: {
                 //ambienteEscritorio começa e termina nessa cena
                 texto: "[8:00]",
                 textoNav:"",
                 imagem: "./escritorio.png",
-                conformidade: "100% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 ambiente: "./audios/ambienteEscritorio.mp3",
                 aoEntrar: function() {
                 temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[10:00]"), 1000));
@@ -579,21 +594,21 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav:"Você leva seis minutos até seu apartamento",
                 imagem: "./janeCaminhando.png",
-                conformidade: "100% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 pararAmbiente: true
             }, 
             cena7: {
                 texto: "Hoje o percurso é idêntico a todos os outros. Você chega em casa, aquece uma refeição padrão no terminal de nutrição e assiste ao boletim noturno do ELLON. Tudo sob controle. Tudo conforme o esperado.",
                 textoNav: "Amanhã será igual",
                 imagem: "./imagem4salva.jpeg",
-                conformidade: "100% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena8: {
                 //ambienteEscritorio começa e termina nessa cena
                 texto: "[08:00]",
                 textoNav:"",
                 imagem: "./escritorio.png",
-                conformidade: "100% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 ambiente: "./audios/ambienteEscritorio.mp3",
                 aoEntrar: function() {
                 temporizadoresAtivos.push(setTimeout(() => adicionarLinhaHistoria("[10:00]"), 1000));
@@ -612,7 +627,7 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav:"A Praça Central de Novara é simétrica e limpa.",
                 imagem: "./janeCaminhando.png",
-                conformidade: "100% de conformidade",
+                conformidade: calcularConformidade(conformidade, -2),
                 pararAmbiente: true
             }, 
             cena10: {
@@ -620,80 +635,80 @@ function tocarEfeito(caminhoAudio) {
                 textoNav:"Você continua o caminho pela praça",
                 destinoNav: "cena12",
                 imagem: "./praca.png",
-                conformidade: "100% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena12: {
                 texto: "Entre os arbustos podados do canteiro está algo que não deveria estar ali. Um objeto retangular, parcialmente coberto por folhas. Diferente de tudo que você reconhece. Você.... ",
-                textoNav:"Desvia o olhar",//mantendo a navegação linear
+                textoNav:"Desvia o olhar",//keeps the conformidade high!
                 textoNav2: "Se aproxima do objeto",
-                destinoNav2: "cena16", //indo para a outra alternativa
+                destinoNav2: "cena16", //lowers the conformidade!
                 imagem: "./arbusto.png",
-                conformidade: "95% de conformidade"
+                conformidade: calcularConformidade(conformidade, -3)
             },
             cena13: {
                 texto: "Você decide deixar o objeto estranho no lugar dele. O objeto peremanece entre os galhos. Você se levanta, ajusta a bolsa no ombro e caminha em direção à saída da praça sem olhar para trás. Seu coração bate um pouco mais rápido que o normal.",
                 textoNav: "Em casa, você aquece a sua refeição padrão.",
                 imagem: "./arbusto.png",
-                conformidade: "99% de conformidade"
+                conformidade: calcularConformidade(conformidade, +4)
             },
             //ajeitar o layout
             cena14: {
                 texto: "Durante a janta, o boletim do ELLON informa que a produtividade do setor 7-C aumentou 0,4% no último trimestre. Você é mencionada entre as melhores servidoras. Você deveria se sentir bem. Você fica olhando para o teto por horas antes de conseguir dormir.",
                 textoNav:"Você tenta esquecer o objeto estranho.",
                 imagem: "./refeicao.png",
-                conformidade: "99% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena15: {
                 texto: "Algumas coisas, uma vez vistas não podem ser desvistas.",
                 textoNav: "No dia seguinte, você pega o caminho à esquerda.",
                 imagem: "./janela.png",
-                conformidade: "95% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
             },
             cena16: {
                 texto: "Você se aproxima do arbusto com passos lentos, olhando para os lados. Você se abaixa e o retira com cuidado, ele é mais leve do que parece.",
                 quebraLinha: 60,
                 textoNav:"Você vira o objeto nas mãos.",
                 imagem: "./janeLivro.png",
-                conformidade: "85% de conformidade"
+                conformidade: calcularConformidade(conformidade, -9),
             }, 
             cena17: {
                 texto: "Uma das faces tem uma textura irregular, quase orgânica. A outra tem marcas e símbolos dispostos em linhas horizontais. Você reconhece as letras. São palavras. Muitas delas.",
                 textoNav:"Um livro",
                 imagem: "./janeLivroAberto.png",
-                conformidade: "83% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
             },
             cena18: {
                 texto: "Você já viu a palavra em arquivos históricos do trabalho. Objeto de armazenamento de informação pré-ELLON, classificado como obsoleto e desnecessário desde a Grande Conformação de 2141.",
                 textoNav:"Ele existe.",
                 imagem: "./janeLivroAberto.png",
-                conformidade: "80% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             },
             cena19: {
                 //virarPagina começa e termina aqui
                 texto: "Você abre em uma página aleatória e seus olhos pousam em uma linha escrita à mão, uma caligrafia irregular, humana e apressada.",
                 textoNav: "A lente reflete a sua imagem ao ir pra casa.",
                 imagem: "./fraseLivro1.png",
-                conformidade: "75% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
                 efeito: "./audios/virarPagina.mp3"
             },
             cena20: {
                 texto: "Você fecha a porta do apartamento e não acende as luzes. Fica parada no escuro por um momento, bolsa ainda no ombro. O terminal de voz na parede sussurra automaticamente: Bem-vinda, Jane. Temperatura ajust-'",
                 textoNav:"Você desliga o terminal de voz pela primeira vez.",
                 imagem: "./apartamentoNoite.png",
-                conformidade: "73% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             }, 
             cena21: {
                 texto: "Você tira o livro da bolsa. À luz fraca que vem da rua, você começa a ler. O caderno não tem autoria. As primeiras páginas estão com a tinta desbotada mas ainda legíveis.",
                 textoNav:"Isso é um diário.",
                 imagem: "./apartamentoNoite.png",
-                conformidade: "72% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
             },
             cena22: {
                 //virarPagina começa e termina aqui
                 texto: "Doze tipos de pão. No seu terminal de nutrição há um. Balanceado, eficiente, sem desperdício.",
                 textoNav: "Próxima página",
                 imagem: "./diario1.png",
-                conformidade: "71% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
                 efeito: "./audios/virarPagina.mp3"
             },
             cena23: {
@@ -701,14 +716,14 @@ function tocarEfeito(caminhoAudio) {
                 texto: "Crianças que correm. Pessoas que discutem. Você não lembra a última vez que viu uma pessoa rir ou discutir.",
                 textoNav: "Próxima página",
                 imagem: "./diario2.png",
-                conformidade: "79% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
                 efeito: "./audios/virarPagina.mp3"
             },
             cena24: {//virarPagina começa e termina aqui
                 texto: "O diário descreve um mundo onde as pessoas escolhiam o que comer, o que vestir, para onde ir. Músicas que ninguém havia aprovado. Livros sobre assuntos inúteis.",
                 textoNav:"Próxima página.",
                 imagem: "./diario3.png",
-                conformidade: "78% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 efeito: "./audios/virarPagina.mp3"
             }, 
             cena25: {
@@ -716,14 +731,14 @@ function tocarEfeito(caminhoAudio) {
                 texto: "A caligrafia fica trêmula.",
                 textoNav:"Você fecha o diário.",
                 imagem: "./diario4.png",
-                conformidade: "75% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 efeito: "./audios/virarPagina.mp3"
             },
             cena26: {
                 texto: "Lá fora, Novara dorme silenciosa. Os painéis piscam em verde suave. Você fica sentada no escuro por muito tempo com o caderno no colo.",
                 textoNav:"Três dias depois...",
                 imagem: "./janela.png",
-                conformidade: "75% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             }, 
             //A PARTIR DAQUI
             cena27: {
@@ -732,7 +747,7 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 61,
                 textoNav:"Você precisa falar com alguém",
                 imagem: "./escritorio.png",
-                conformidade: "85% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 ambiente: "./audios/ambienteEscritorio.mp3",
             }, 
 
@@ -756,7 +771,7 @@ function tocarEfeito(caminhoAudio) {
                 destinoNav5: "cena41", 
 
                 imagem:  "./teste.png",
-                conformidade: "83% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 pararAmbiente: true
             },
             
@@ -766,21 +781,21 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 61,
                 textoNav: "Dora ouve tudo com um sorriso que não chega aos olhos.",
                 imagem: "./apartamentoDora.png",
-                conformidade: "80% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena30: {
                 texto: "Quando você termina, ela inclina a cabeça levemente e começa a falar: 'Que interessante, Jane. Mas você sabe que os registros históricos não verificados podem conter imprecisões, né? O ELLON já explicou que muito do que se escrevia antes era distorcido por emoções e pensamentos.'",
                 quebraLinha: 61,
                 textoNav: "Ela continua sorrindo, agoniantemente",
                 imagem: "./apartamentoDora.png",
-                conformidade: "80% de conformidade",
+                conformidade: calcularConformidade(conformidade, -3),
             },
             cena31: {
                 texto: "— Você está bem? Parece cansada. Quer que eu agende uma consulta de conformidade para você?' Você vai embora com o caderno ainda na bolsa e um frio estranho no peito.",
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./apartamentoDora.png",
-                conformidade: "80% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             }, 
 
             // --- ROTA DO MARCUS --- LAYOUT OK
@@ -789,14 +804,14 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav: "Ao terminar, ele pergunta: 'Onde guardou?'",
                 imagem: "./corredorMarcos.png",
-                conformidade: "80% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 ambiente: "./audios/ambienteEscritorio.mp3",
             },
             cena33: {
                 texto: "'Em casa. Por quê?' Você responde. Ele olha para os lados rapidamente. 'Destrói, Jane.' A voz agora é quase um sussurro. 'Não mostra para mais ninguém. Não fala sobre isso no trabalho. Não fala sobre isso em lugar nenhum com câmera.'",
                 textoNav: "Ele vai embora sem falar nada.",
                 imagem: "./corredorMarcos.png",
-                conformidade: "78% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena34: {
                 //ambiente escritorio termina aqui
@@ -804,7 +819,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./corredorJane.png",
-                conformidade: "79% de conformidade",
+                conformidade: calcularConformidade(conformidade, -2),
                 pararAmbiente: true
             },
 
@@ -813,21 +828,21 @@ function tocarEfeito(caminhoAudio) {
                 texto: "Senhora Ieda, 90 anos. A moradora mais antiga do bloco. A Dona Ieda abre a porta antes de você bater — como se soubesse que você viria. O apartamento dela cheira diferente dos outros. Mais denso. Você nunca havia entrado antes.",
                 textoNav: "Você começa a falar sobre o caderno.",
                 imagem: "./salaIeda.png",
-                conformidade: "78% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             }, 
             cena36: {
                 texto: "Antes de terminar a primeira frase, a Senhora Ieda levanta uma mão. 'Eu sei o que é um livro, minha filha.' Você para. 'Eu tinha onze anos quando aconteceu a Conformação.' A voz é calma, quase sem emoção. 'Eles queimaram todos que a gente tinha'.",
                 quebraLinha: 60,
                 textoNav: "Os olhos são velhos e completamente lúcidos.",
                 imagem: "./salaIeda.png",
-                conformidade: "75% de conformidade",
+                conformidade: calcularConformidade(conformidade, -2),
             },
             cena37: {
                 texto: "'Guarda bem esse caderno e não confia em todo mundo pra falar sobre ele.' A conversa acabou. Você desce as escadas com a sensação de que acabou de tocar em algo muito maior do que esperava.",
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./salaIeda.png",
-                conformidade: "75% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             }, 
 
             // --- ROTA DO TOMÁS --- LAYOUT OK
@@ -836,21 +851,21 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav: "Você conta sobre o caderno enquanto ele limpa o chão",
                 imagem: "./refeitorioTomas.png",
-                conformidade: "75% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             }, 
             cena39: {
                 texto: "Ele ouve sem parar de limpar o chão. 'Doze tipos de pão?'' ele repete, quando você termina. 'É o que estava escrito.' Ele para de limpar. Olha para você por um segundo. 'Minha avó falava em algo assim. Eu achei que era invenção de velho'.", 
                 quebraLinha: 60,
                 textoNav: "Ele recomeça a limpar mais devagar",
                 imagem: "./refeitorioTomas.png",
-                conformidade: "75% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena40: {
                 texto: "'Você acha que era verdade? O que ela falava?' Ele pergunta e você fica sem resposta. Ele está, pela primeira vez talvez, duvidando.",
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./refeitorioTomas.png",
-                conformidade: "75% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             }, 
 
             // --- ROTA DA CLEO ---
@@ -859,7 +874,7 @@ function tocarEfeito(caminhoAudio) {
                 texto: "Cleo, 48 anos. Supervisora do setor 7-C. Sempre eficiente. Sempre correta. Você não sabe bem por que escolhe Cleo. Talvez porque ela seja a pessoa mais inteligente que você conhece. Talvez porque, no fundo, você queira que alguém com autoridade confirme que o que você sentiu faz sentido.",
                 textoNav: "Você conta sobre o diário para ela.",
                 imagem: "./escritorioCleo.png",
-                conformidade: "75% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 ambiente: "./audios/ambienteEscritorio.mp3",
             }, 
             cena42: {
@@ -867,7 +882,7 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav: "Uma pausa...",
                 imagem: "./escritorioCleo.png",
-                conformidade: "75% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             }, 
             cena43: {
                 //ambienteEscritorio termina
@@ -875,45 +890,45 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Voltar a pensar com quem falar.",
                 destinoNav: "cena28", // Volta para o Hub!
                 imagem: "./escritorioCleo.png",
-                conformidade: "75% de conformidade",
+                conformidade: calcularConformidade(conformidade, +2),
                 pararAmbiente: true
             }, 
 
             // --- CONTINUAÇÃO DA HISTÓRIA ---
             cena44: {
                 texto: "Após conversar com as pessoas, seu coração fica dividido. Sua mente corre com a possibilidade de ser pega e com ideias passadas de um tempo, mais solto e mais emocionante. Com tudo isso em mente, você decide...",
-                textoNav: "...entregar o diário.",
+                textoNav: "...entregar o diário.", //lowers the conformidade just a bit
                 destinoNav: "cena45",
-                textoNav2: "...ficar com o diário.",
+                textoNav2: "...ficar com o diário.", //lowers the conformidade a lot
                 destinoNav2: "cena50",
                 imagem: "./janeLivro.png",
-                conformidade: "70% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             // ---- ENTREGAR DIÁRIO ------ 
             cena45: {
                 texto: "Você entrega o caderno no Departamento de Conformidade na manhã seguinte. A atendente registra o objeto sem olhar para você. Emite um comprovante. Diz que sua conformidade foi anotada positivamente. Você volta para o trabalho.",
                 textoNav: "Você escolheu não saber",
                 imagem: "./centroConformidade.png",
-                conformidade: "100% de conformidade"
+                conformidade: calcularConformidade(conformidade, +15)
             }, 
             cena46: {
                 texto: "Então por que você não consegue parar de pensar no caderno? O mundo de antes,com algum tipo de amarra que ela nunca tinha percebido antes.",
                 textoNav: "Então... surge uma ideia.",
                 imagem: "./imagem4salva.jpeg",
-                conformidade: "100% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena47: {
                 texto: "Você decide voltar ao Departamento de Conformidadas. Provavelmente deve ter algum segurança disposto a conversar. Seu plano? Conversar com alguém para ter acesso ao livro de volta, nem que seja por alguns minutos. ",
                 textoNav: "Antes das 21:00, você já está saindo de casa",
                 imagem: "./apartamentoNoite.png",
-                conformidade: "100% de conformidade"
+                conformidade: calcularConformidade(conformidade, -2)
             },
             cena48: {
                 texto: "Não tem ninguém lá. Nada. Você começa a se perguntar por que tinha tido essa ideia insana. Atrás das grades do terreno, você enxerga uma pequena fresta em uma das janelas do prédio. É loucura demais? Você começa a escalar a grade e...",
                 quebraLinha: 60,
                 textoNav: "Sente alguém tocar em você",
                 imagem: "./centroConformidadeNoite.png",
-                conformidade: "70% de conformidade"
+                conformidade: calcularConformidade(conformidade, -5)
             },
             // vai ser imagem
             cena49: {
@@ -923,7 +938,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Atrás, um endereço. Uma hora. Hoje, a meia noite",
                 destinoNav: "cena52",
                 imagem: "./mensagemPapel.png",
-                conformidade: "70% de conformidade", 
+                conformidade: calcularConformidade(conformidade, -3), 
                 efeito: "./audios/passos.mp3"
             },
             // ----- FICAR COM DIÁRIO ------ 
@@ -931,7 +946,7 @@ function tocarEfeito(caminhoAudio) {
                 texto: "Você não dorme naquela noite. As pessoas que você conversou tiveram reações tão diferentes... E todas elas, de algum modo, confirmaram o que você já sentia: o mundo descrito naquele caderno existiu e foi apagado.",
                 textoNav: "Na manhã seguinte...",
                 imagem: "./apartamentoNoite.png",
-                conformidade: "68% de conformidade"
+                conformidade: calcularConformidade(conformidade, -8)
             },
             //vai ser imagem
             cena51: {
@@ -939,7 +954,7 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav: "Abaixo, um endereço. Uma hora. Hoje, à meia-noite.",
                 imagem: "./mensagemRebeldes.png",
-                conformidade: "70% de conformidade"
+                conformidade: calcularConformidade(conformidade, -3)
             },
             // --- HISTÓRIA LINEAR DE NOVO ---- 
             cena52: {
@@ -948,7 +963,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Você chega a pé, às 23h58.",
                 destinoNav: "cena53",
                 imagem: "./beco.png",
-                conformidade: "60% de conformidade",
+                conformidade: calcularConformidade(conformidade, -7),
                 ambiente: "./audios/sonsLampada.mp3"
             },
             cena53: {
@@ -956,7 +971,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Uma mulher de cabelo curto e olhos calmos se ergue.",
                 destinoNav: "cenaA54",
                 imagem: "./rebeldes1.png",
-                conformidade: "60% de conformidade"
+                conformidade: calcularConformidade(conformidade, -4)
             },
             cenaA54: {
                 texto: "'Jane Silva. Setor 7-C. Eu sou Vera.' Você olha para os outros e, entre eles, reconhece o homem de meia-idade. Ele trabalha em seu prédio, porem no turno noturno. 'Sente-se' Diz Vera.",
@@ -964,72 +979,72 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "'Temos muito para conversar.'",
                 destinoNav: "cena55",
                 imagem: "./rebeldes1.png",
-                conformidade: "60% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             },  
             cena55: {
                 texto: "'Quem são vocês?' Você pergunta e Vera começa a responder 'Somos pessoas que, em algum momento, encontraram algo que não deviam encontrar. Uma memória que o sistema não conseguiu apagar completamente.' Uma pausa. 'Assim como você.'",
                 textoNav: "O homem mais velho, então, fala.",
                 imagem: "./veraFalando.png",
-                conformidade: "60% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             },  
             cena56: {
                 texto: "'Eu era engenheiro. Trabalhei no Complexo Central por onze anos antes de entender o que estava construindo. 'Agora' diz Vera 'você quer sentar?'",
                 quebraLinha: 60,
                 textoNav: "Vera fala por quase uma hora.",
                 imagem: "./engenheiroFalando.png",
-                conformidade: "60% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             },   
             cena57: {
                 texto: "O ELLON começou como um projeto de organização de informação: catalogar, preservar, distribuir conhecimento de forma eficiente. Foi assim por anos, mas em algum ponto os parâmetros mudaram. Ninguém sabe ao certo por quem, ou quando exatamente.",
                 quebraLinha: 60,
                 textoNav: "O ELLON primeiro atingiu as notícias.",
                 imagem: "./engenheiroFalando.png",
-                conformidade: "50% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },  
             cena58: {
                 texto: "Depois os arquivos históricos. Depois tudo foi monitorado, registrado, analisado. As pessoas foram se ajustando sem perceber. Em uma geração, o mundo do diário havia sumido. A maior parte de quem viveu a transição já morreu. Quem sobrou ou vive em silêncio ou...",
                 quebraLinha: 60,
                 textoNav: "...montou um plano.",
                 imagem: "./veraFalando.png",
-                conformidade: "70% de conformidade"
+                conformidade: calcularConformidade(conformidade, -5)
             },    
             cena59: {
                 texto: "'Existe uma sala no subsolo do Complexo Central' continua o engenheiro.' É lá que o ELLON opera fisicamente. Servidores, cabos, o sistema nervoso inteiro da rede. Se desligar o cabo principal, o sistema para.'",
                 textoNav: "'Espera' você pergunta. 'Para... pra sempre?'",
                 imagem: "./engenheiroFalando.png",
-                conformidade: "70% de conformidade"
+                conformidade: calcularConformidade(conformidade, -3)
             },
             cena60: {
                 texto: "'Não, eles podem religar. Mas nos dá tempo o suficiente para vazar informações reprimidas. A sua credencial do setor 7-C abre as três primeiras portas do Complexo. Nenhum de nós consegue desligar o ELLON, só você. ",
                 textoNav: "Você precisa de uma noite para pensar",
                 imagem: "./veraFalando.png",
-                conformidade: "70% de conformidade"
+                conformidade: calcularConformidade(conformidade, -2)
             },
             cena61: {
                 
                 texto: "'Uma noite. Amanhã você não encontra mais este lugar.' Vera não diz isso em tom de ameaça, é apenas um fato dito com cuidado.  'Se decidir ajudar, apareça no trabalho normalmente. Deixe sua bolsa embaixo da mesa com o zíper aberto. Alguém vai deixar as instruções.'",
                 textoNav: "Você sobre a escada e volta para a noite de Norvara.",
                 imagem: "./veraFalando.png",
-                conformidade: "68% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena62: {
                 texto: "No caminho para casa, você pensa nas conversas que teve, no caderno e em quem escreveu aquelas palavras... Na manhã seguinte, você vai trabalhar. Coloca a bolsa embaixo da mesa.",
                 textoNav: "Zíper aberto.",
                 imagem: "./janeCaminhando.png",
-                conformidade: "70% de conformidade"
+                conformidade: calcularConformidade(conformidade, 0)
             },
             cena63: {
                 texto: "Vera sorri ao ver que você encontrou o novo esconderijo. Ela começa a contar sobre o plano. 'Você entra no Complexo Central pela entrada de servidores públicos...'",
                 textoNav: "O engenheiro desenha um mapa de memória",
                 imagem: "./rebelde2.png",
-                conformidade: "60% de conformidade"
+                conformidade: calcularConformidade(conformidade, -6)
             },
             cena64: {
                 texto: "'Corredor leste, escada de manutenção, subsolo 2. Na porta tem apenas um símbolo: um círculo com uma linha vertical.' Ele explica. 'Uma vez lá dentro, você vai ver um painel com vários cabos. Você puxa. Só isso.",
                 quebraLinha:60,
                 textoNav: "'E depois?' Você pergunta.",
                 imagem: "./rebelde2.png",
-                conformidade: "60% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             },
             cena65: {
                 //sonsLampada termina aqui
@@ -1037,7 +1052,7 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav: "No dia seguinte...",
                 imagem: "./rebelde2.png",
-                conformidade: "60% de conformidade",
+                conformidade: calcularConformidade(conformidade, -3),
                 pararAmbiente: true
             },  
             cena66: {
@@ -1045,15 +1060,14 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Você respira fundo... e entra",
                 destinoNav: "cena1A",
                 imagem: "./centroProcessamento.png",
-                conformidade: "60% de conformidade"
+                conformidade: calcularConformidade(conformidade, -1)
             },  
             cena1A: {
-                //texto: "A recepcionista nem levanta os olhos. Sua credencial passa no leitor. Verde. Primeira porta. Segunda porta. Terceira. O corredor leste está vazio. Fluorescentes brancos no teto. O cheiro de ar processado é mais forte aqui. Metal, frio, alguma coisa elétrica. Você encontra a escada de manutenção e a porta.",
                 texto: "Sua credencial passa no leitor. Verde. Primeira porta. Segunda porta. Terceira. O cheiro de ar é mais forte aqui. Metal, frio, alguma coisa elétrica. Você encontra a escada de manutenção e a porta.",
                 textoNav: "Você desce as escadas.",
                 destinoNav: "cena2A",
                 imagem: "./JaneDescendo.png",
-                conformidade: "60% de conformidade"
+                conformidade: calcularConformidade(conformidade, -7)
             },   
             cena2A: {
                 //descendoEscadas começa e termina aqui
@@ -1062,7 +1076,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Você tenta abrir a porta...",
                 destinoNav: "cena3A",
                 imagem: "./porta.png",
-                conformidade: "50% de conformidade",
+                conformidade: calcularConformidade(conformidade, -4),
                 efeito: "./audios/descendoEscadas.mp3"
             },  
             cena3A: {
@@ -1070,7 +1084,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Responda corretamente para prosseguir.",
                 destinoNav: "cena67",
                 imagem: "./visorQuiz.png",
-                conformidade: "40% de conformidade"
+                conformidade: calcularConformidade(conformidade, -2)
             },  
 
             //QUIZ
@@ -1079,7 +1093,7 @@ function tocarEfeito(caminhoAudio) {
                 texto: "O coração acelera. As perguntas na tela não são sobre protocolos ou senhas. Sobre notícias. Sobre fatos.",
                 textoNav: "Testar seu conhecimento.",
                 imagem: "./visorQuiz.png",
-                conformidade: "60% de conformidade",
+                conformidade: calcularConformidade(conformidade, -2),
                 efeito: "./audios/janeTensa.mp3"
             },   
             cena68: {
@@ -1092,7 +1106,7 @@ function tocarEfeito(caminhoAudio) {
                 aoEntrar: function() {
                     iniciarTimerQuiz()
                 },
-                conformidade: "40% de conformidade"
+                conformidade: calcularConformidade(conformidade, -6)
             },  
             cena69: {
                 texto: "Esse vídeo é falso?\n\n⏱️ Tempo restante: [TEMPO] segundos.",
@@ -1101,7 +1115,7 @@ function tocarEfeito(caminhoAudio) {
                 destinoNav: "cena70", 
                 textoNav2: "NÃO",
                 destinoNav2: "cena71",
-                conformidade: "30% de conformidade",
+                conformidade: calcularConformidade(conformidade, -6),
                 aoEntrar: function() {
                     atualizarRelogioNaTela()
                 },
@@ -1113,7 +1127,7 @@ function tocarEfeito(caminhoAudio) {
                 destinoNav: "cena71", 
                 textoNav2: "NÃO",
                 destinoNav2: "cena73",
-                conformidade: "20% de conformidade",
+                conformidade: calcularConformidade(conformidade, -10),
                 aoEntrar: function() {
                     atualizarRelogioNaTela()
                 },
@@ -1124,7 +1138,7 @@ function tocarEfeito(caminhoAudio) {
                 textoNav: "Você sobe correndo.",
                 imagem: "quizErrado.png",
                 destinoNav: "cena72",
-                conformidade: "20% de conformidade",
+                conformidade: calcularConformidade(conformidade, +22),
                 efeito: "./audios/janeTensa.mp3",
                 aoEntrar: function() {
                     pararTimerQuiz()
@@ -1135,7 +1149,7 @@ function tocarEfeito(caminhoAudio) {
                 imagem: "quizErrado.png",
                 textoNav: "Mais tarde, você tenta novamente",
                 destinoNav: "cena68", 
-                conformidade: "20% de conformidade",
+                conformidade: calcularConformidade(conformidade, 0),
                 aoEntrar: function() {
                     pararTimerQuiz()
                 },
@@ -1145,7 +1159,7 @@ function tocarEfeito(caminhoAudio) {
                 texto: "", 
                 textoNav:"",
                 imagem: "./Tela_branca@4x.png",
-                conformidade: "10% de conformidade",
+                conformidade: calcularConformidade(conformidade, -9),
                 aoEntrar: function() {
                     pararTimerQuiz()
                     piscarTela()
@@ -1155,14 +1169,14 @@ function tocarEfeito(caminhoAudio) {
                 texto: "A sala é menor do que você imaginava. Esta sala é o cerne do ELLON. O zumbido das máquinas é ensurdecedor dentro dessa sala. O ar vibra.", 
                 textoNav:"Você se aproxima",
                 imagem: "./salaMaquinas.png",
-                conformidade: "10% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
             },
             cena75: {
                 texto: "Você caminha até achar o painel principal, como o engenheiro disse. Vários cabos vermelhos juntos, como se fosse um só, e um visor do lado. O cabo está a trinta centímetros das suas mãos e então, você hesita. O mundo do caderno não vai voltar de uma vez. Vai ser confuso, barulhento, imperfeito.", 
                 quebraLinha: 60,
                 textoNav:"Você coloca a mão no cabo.",
                 imagem: "./terminalELLON2.png",
-                conformidade: "10% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
             },
             cena76: {
                 //janeTensa começa aqui
@@ -1170,14 +1184,14 @@ function tocarEfeito(caminhoAudio) {
                 quebraLinha: 60,
                 textoNav:"A máquina *ri*.",
                 imagem: "./janeVELLONsusto.png",
-                conformidade: "10% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
                 efeito: "./audios/janeTensa.mp3"
             },
             cena77: {
                 texto: "Mas o imperfeito dói, Jane. O imperfeito machuca, a verdade é dolorosa, é poderosa.' Você não pode escutar ele. Não! 'Eu preciso fazer isso.' Você diz. 'Por mim, por todo mundo. Eu fui a que chegou mais longe de tirar os cabos e...' Com escárnio na voz, ele continua:", 
                 textoNav:"'Você acha que foi a única?'",
                 imagem: "./janeVELLONencarando.png",
-                conformidade: "10% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
                 efeito: "./audios/janeTensa.mp3"
             },
             cena78: {
@@ -1188,26 +1202,26 @@ function tocarEfeito(caminhoAudio) {
                 textoNav2: "Você decide ignorar ELLON",
                 destinoNav2: "cena86",
                 imagem: "./janeVELLONencarando.png",
-                conformidade: "10% de conformidade",
+                conformidade: calcularConformidade(conformidade, -1),
                 efeito: "./audios/janeTensa.mp3"
             },
             cena79: {
                 texto: "'Vá para casa, Jane' Ao ouvir a voz metálica de ELLON, você começa a sentir vergonha, desgosto, medo, confusão, alívio, alegria... Ele continua a falar: 'Espero que você entregue o diário amanhã, Jane. Ninguém está pronto para a verdade.'", 
                 textoNav:"Você nem sabe como voltou para casa",
                 imagem: "./terminalELLON.png",
-                conformidade: "30% de conformidade",
+                conformidade:  calcularConformidade(conformidade, +30),
             },
             cena80: {
                 texto: "Está dormente. Você segura o diário, não sabendo se joga ele fora ou se guarda ele. Enquanto folheia o objeto de sua obsessão durante semanas, uma foto cai. Tinha um bolso secreto no diário...", 
                 textoNav:"Uma foto cai...",
                 imagem: "./janeLivroChorando.png",
-                conformidade: "35% de conformidade",
+                conformidade: calcularConformidade(conformidade, +3),
             },
             cena81: {
                 texto: " ", 
                 textoNav:"",
                 imagem: "./fotoCaindo.png",
-                conformidade: "38% de conformidade",
+                conformidade: calcularConformidade(conformidade, -6),
                 aoEntrar: function () {
                     trocarTela()
                 }
@@ -1216,13 +1230,13 @@ function tocarEfeito(caminhoAudio) {
                 texto: "Uma última foto. No verso, estava escrito: '2141. Era uma segunda-feira. O ELLON já estava entre nós, mas ninguém queria admitir isso. Esse foi o nosso último dia juntos.'", 
                 textoNav:"Naquela noite, seus sonhos são assombrados pela foto",
                 imagem: "./foto.png",
-                conformidade: "40% de conformidade",
+                conformidade: calcularConformidade(conformidade, -8),
             },
             cena83: {
                 texto: "Você acorda e olha uma última vez para aquela foto. Você sabe o que fazer.", 
                 textoNav:"Você volta para a sala de máquinas",
                 imagem: "./foto.png",
-                conformidade: "40% de conformidade",
+                conformidade: calcularConformidade(conformidade, -13),
             },
             cena84: {
                 texto: "'De volta tão cedo?' ELLON perguta. 'Eu achei que...''A gente se acostumou muito a absorver mentiras.' Você começa. 'Nós iremos sofrer quando você se for mas vai ser para melhor, eventualmente.' ", 
@@ -1250,7 +1264,7 @@ function tocarEfeito(caminhoAudio) {
                 texto: "Você puxa o cabo", 
                 textoNav:"",
                 imagem: "./janeEmpoderada.png",
-                conformidade: "5% de conformidade",
+                conformidade: "0% de conformidade",
                 aoEntrar: function() {
                     //aumentar o tempo de tela escura para 10 segundo e, no terceiro segundo, tocar o som desligandoELLON
                     matarELLON()
@@ -1374,7 +1388,12 @@ function tocarEfeito(caminhoAudio) {
             } else {
                 setTextoHistoria(quebrarLinhas(textoParaMostrar))
             }
-            document.getElementById('texto-conformidade').textContent = cena.conformidade;
+            const textoConformidade = typeof cena.conformidade === 'string'
+                ? cena.conformidade
+                : (cena.conformidade && typeof cena.conformidade.aplicar === 'function'
+                    ? cena.conformidade.aplicar()
+                    : String(cena.conformidade));
+            document.getElementById('texto-conformidade').textContent = textoConformidade;
             
             const imgCena = document.getElementById('imagem-cenas');
             imgCena.setAttribute('href', cena.imagem);
